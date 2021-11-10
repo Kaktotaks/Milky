@@ -17,6 +17,7 @@ class LoginViewController: UIViewController {
     let loginButton = UIButton()
     let signUpButton = UIButton()
     let enterAsGuestButton = UIButton()
+    let signOutButton = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +33,36 @@ class LoginViewController: UIViewController {
             enterAsGuestButton.isHidden = true
             
         }
+    }
+    
+    @objc private func signOutButtonTapped() {
+        do {
+            try FirebaseAuth.Auth.auth().signOut()
+            
+            milkyLabel.isHidden = false
+            emailField.isHidden = false
+            passwordField.isHidden = false
+            loginButton.isHidden = false
+            signUpButton.isHidden = false
+            enterAsGuestButton.isHidden = false
+            
+            signOutButton.removeFromSuperview()
+            
+        }
+        catch {
+            print("An error occurred")
+        }
         
     }
+    
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        emailField.becomeFirstResponder()
+        if FirebaseAuth.Auth.auth().currentUser == nil {
+            emailField.becomeFirstResponder()
+        }
 
     }
     

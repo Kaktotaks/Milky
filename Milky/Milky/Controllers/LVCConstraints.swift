@@ -41,7 +41,7 @@ extension LoginViewController {
         emailField.layer.cornerRadius = 10
         emailField.autocapitalizationType = .none
         emailField.leftViewMode = .always
-        emailField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
+        emailField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         view.addSubview(emailField)
         emailField.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -56,7 +56,7 @@ extension LoginViewController {
         passwordField.layer.cornerRadius = 10
         passwordField.autocapitalizationType = .none
         passwordField.leftViewMode = .always
-        passwordField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
+        passwordField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         view.addSubview(passwordField)
         passwordField.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
@@ -110,6 +110,7 @@ extension LoginViewController {
             make.top.equalTo(signUpButton).inset(50)
             make.height.equalTo(40)
         }
+        
     }
     
     
