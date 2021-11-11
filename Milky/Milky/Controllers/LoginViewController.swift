@@ -36,17 +36,7 @@ class LoginViewController: UIViewController {
                     view.backgroundColor = .green
                     
                     view.addSubview(signOutButton)
-                    signOutButton.backgroundColor = .black
-                    signOutButton.addTarget(self, action: #selector(signOutButtonTapped), for: .touchUpInside)
-                    signOutButton.setTitleColor(.white, for: .normal)
-                    signOutButton.setTitle("Sign Out", for: .normal)
-                    signOutButton.layer.cornerRadius = 10
-                    signOutButton.snp.makeConstraints { make in
-                        make.centerX.equalToSuperview()
-                        make.width.equalTo(80)
-                        make.bottom.equalToSuperview().inset(40)
-                        make.height.equalTo(30)
-                    }
+                    initiateSignOutButton()
         
                 }
     }
@@ -91,6 +81,8 @@ class LoginViewController: UIViewController {
         signUpButton.isHidden = true
         enterAsGuestButton.isHidden = true
         signOutButton.isHidden = false
+        view.addSubview(signOutButton)
+        initiateSignOutButton()
         
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
@@ -109,8 +101,15 @@ class LoginViewController: UIViewController {
         
         Auth.auth().createUser(withEmail: email, password: password) { [self]_, error in
             if error == nil {
-                Auth.auth().signIn(withEmail: email, password: password)
                 print("You have sign in after registration account")
+                let alert = UIAlertController(
+                    title: "Create new account",
+                    message: "You want to continue and create a new account",
+                    preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
+                
+                Auth.auth().signIn(withEmail: email, password: password)
                 
                 milkyLabel.isHidden = true
                 emailField.isHidden = true
@@ -118,6 +117,9 @@ class LoginViewController: UIViewController {
                 loginButton.isHidden = true
                 signUpButton.isHidden = true
                 enterAsGuestButton.isHidden = true
+                signOutButton.isHidden = false
+                view.addSubview(signOutButton)
+                initiateSignOutButton()
                 
                 emailField.resignFirstResponder()
                 passwordField.resignFirstResponder()
