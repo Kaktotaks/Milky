@@ -115,12 +115,12 @@ extension LoginViewController {
     
     
     func initiateSignOutButton() {
-        signOutButton.backgroundColor = .black
-        signOutButton.addTarget(self, action: #selector(signOutButtonTapped), for: .touchUpInside)
-        signOutButton.setTitleColor(.white, for: .normal)
-        signOutButton.setTitle("Sign Out", for: .normal)
-        signOutButton.layer.cornerRadius = 10
-        signOutButton.snp.makeConstraints { make in
+        logOutButton.backgroundColor = .black
+        logOutButton.addTarget(self, action: #selector(logOutButtonTapped), for: .touchUpInside)
+        logOutButton.setTitleColor(.white, for: .normal)
+        logOutButton.setTitle("Log Out", for: .normal)
+        logOutButton.layer.cornerRadius = 10
+        logOutButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.width.equalTo(80)
             make.bottom.equalToSuperview().inset(40)

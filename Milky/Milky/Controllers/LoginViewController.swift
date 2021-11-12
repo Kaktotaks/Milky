@@ -18,27 +18,27 @@ class LoginViewController: UIViewController {
     let loginButton = UIButton()
     let signUpButton = UIButton()
     let enterAsGuestButton = UIButton()
-    let signOutButton = UIButton()
+    let logOutButton = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupLoginViewUI()
         
-                if FirebaseAuth.Auth.auth().currentUser != nil {
-                    milkyLabel.isHidden = true
-                    emailField.isHidden = true
-                    passwordField.isHidden = true
-                    loginButton.isHidden = true
-                    signUpButton.isHidden = true
-                    enterAsGuestButton.isHidden = true
-                    signOutButton.isHidden = false
-                    view.backgroundColor = .green
-                    
-                    view.addSubview(signOutButton)
-                    initiateSignOutButton()
-        
-                }
+        if FirebaseAuth.Auth.auth().currentUser != nil {
+            milkyLabel.isHidden = true
+            emailField.isHidden = true
+            passwordField.isHidden = true
+            loginButton.isHidden = true
+            signUpButton.isHidden = true
+            enterAsGuestButton.isHidden = true
+            logOutButton.isHidden = false
+            view.backgroundColor = .green
+            
+            view.addSubview(logOutButton)
+            initiateSignOutButton()
+            
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -47,7 +47,6 @@ class LoginViewController: UIViewController {
         if FirebaseAuth.Auth.auth().currentUser == nil {
             emailField.becomeFirstResponder()
         }
-        
     }
     
     
@@ -60,38 +59,39 @@ class LoginViewController: UIViewController {
             !password.isEmpty
         else { return }
         
-        Auth.auth().signIn(withEmail: email, password: password) {user, error in
+        Auth.auth().signIn(withEmail: email, password: password) { [self] user, error in
             if let error = error, user == nil {
                 let alert = UIAlertController(
-                    title: "Login Failed",
+                    title: " ❌ Login Failed",
                     message: error.localizedDescription,
                     preferredStyle: .alert)
                 
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alert, animated: true, completion: nil)
+            } else if error == nil, user == user {
+                
+                print("You have log in")
+                
+                milkyLabel.isHidden = true
+                emailField.isHidden = true
+                passwordField.isHidden = true
+                loginButton.isHidden = true
+                signUpButton.isHidden = true
+                enterAsGuestButton.isHidden = true
+                logOutButton.isHidden = false
+                view.addSubview(logOutButton)
+                initiateSignOutButton()
+                
+                emailField.resignFirstResponder()
+                passwordField.resignFirstResponder()
+                
+                view.backgroundColor = .green
             }
         }
-        
-        print("You have log in")
-        
-        milkyLabel.isHidden = true
-        emailField.isHidden = true
-        passwordField.isHidden = true
-        loginButton.isHidden = true
-        signUpButton.isHidden = true
-        enterAsGuestButton.isHidden = true
-        signOutButton.isHidden = false
-        view.addSubview(signOutButton)
-        initiateSignOutButton()
-        
-        emailField.resignFirstResponder()
-        passwordField.resignFirstResponder()
-        
-        view.backgroundColor = .green
     }
     
     @objc func signUpButtonPressed(sender: UIButton!) {
-        print("Sign Up button tapped ")
+        print("Sign Up button tapped")
         guard
             let email = emailField.text,
             let password = passwordField.text,
@@ -103,8 +103,8 @@ class LoginViewController: UIViewController {
             if error == nil {
                 print("You have sign in after registration account")
                 let alert = UIAlertController(
-                    title: "Create new account",
-                    message: "You want to continue and create a new account",
+                    title: "Well done 🎉",
+                    message: "You have just created a new account and already loged in.",
                     preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alert, animated: true, completion: nil)
@@ -117,16 +117,15 @@ class LoginViewController: UIViewController {
                 loginButton.isHidden = true
                 signUpButton.isHidden = true
                 enterAsGuestButton.isHidden = true
-                signOutButton.isHidden = false
-                view.addSubview(signOutButton)
+                logOutButton.isHidden = false
+                view.addSubview(logOutButton)
                 initiateSignOutButton()
                 
                 emailField.resignFirstResponder()
                 passwordField.resignFirstResponder()
                 view.backgroundColor = .green
             } else {
-                
-                print("Error in createUser: \(error?.localizedDescription ?? "")")
+                print(" ❗️Error in createUser: \(error?.localizedDescription ?? "")")
                 let alert = UIAlertController(
                     title: "Error in createUser:",
                     message: "\(error?.localizedDescription ?? "")",
@@ -143,7 +142,7 @@ class LoginViewController: UIViewController {
     }
     
     
-    @objc func signOutButtonTapped() {
+    @objc func logOutButtonTapped() {
         do {
             try FirebaseAuth.Auth.auth().signOut()
             
@@ -155,7 +154,7 @@ class LoginViewController: UIViewController {
             enterAsGuestButton.isHidden = false
             view.backgroundColor = .white
             
-            signOutButton.removeFromSuperview()
+            logOutButton.removeFromSuperview()
             
         }
         catch {
