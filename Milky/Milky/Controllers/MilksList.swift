@@ -9,17 +9,7 @@ import Foundation
 import UIKit
 
 class MilksList: UIViewController {
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
-    
-    
-    
-    
-    
-    
-    
 }
