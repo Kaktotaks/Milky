@@ -12,7 +12,7 @@ import UIKit
 extension LoginViewController {
     func setupConstraintsForLoginView() {
     view.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-
+// MARK: - func for LogIn view
         view.addSubview(milkyLabel)
         milkyLabel.snp.makeConstraints { make in
         make.leading.trailing.equalToSuperview().inset(30)
@@ -61,8 +61,8 @@ extension LoginViewController {
             make.height.equalTo(40)
         }
     }
-
-    func initiateSignOutButton() {
+// MARK: - func for LogOut button
+    func initiateLogOutButton() {
         logOutButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.width.equalTo(80)

@@ -10,6 +10,10 @@ import FirebaseAuth
 import SnapKit
 
 class LoginViewController: UIViewController {
+    // MARK: - Variables
+    lazy var passRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{6,}$"
+    lazy var emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
     lazy var milkyLabel: UILabel = {
         let value: UILabel = .init()
         value.text = "Milky 🐮"
@@ -22,7 +26,7 @@ class LoginViewController: UIViewController {
 
     lazy var emailField: UITextField = {
         let value: UITextField = .init()
-        value.placeholder = "Email Address" // нормальный пробел найти решение по нему
+        value.placeholder = "Email Address"
         value.font = UIFont.systemFont(ofSize: 20)
         value.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 176/255, alpha: 50/255)
         value.layer.cornerRadius = 10
@@ -84,12 +88,15 @@ class LoginViewController: UIViewController {
         return value
     }()
 
+    // MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        emailField.delegate = self
+        passwordField.delegate = self
+
         setupConstraintsForLoginView()
         userLogedInUI()
-
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -99,8 +106,9 @@ class LoginViewController: UIViewController {
             emailField.becomeFirstResponder()
         }
     }
-
+    // MARK: - Functions
     @objc func loginButtonPressed(sender: UIButton!) {
+
         print("loginButtonPressed")
         guard
             let email = emailField.text,
@@ -123,20 +131,20 @@ class LoginViewController: UIViewController {
             } else if error == nil, user == user {
                 print("You have log in")
 
-            self.self.milkyLabel.isHidden = true
-            self.emailField.isHidden = true
-            self.passwordField.isHidden = true
-            self.loginButton.isHidden = true
-            self.signUpButton.isHidden = true
-            self.enterAsGuestButton.isHidden = true
-            self.logOutButton.isHidden = false
-            self.view.addSubview(self.logOutButton)
-            self.initiateSignOutButton()
+                self.self.milkyLabel.isHidden = true
+                self.emailField.isHidden = true
+                self.passwordField.isHidden = true
+                self.loginButton.isHidden = true
+                self.signUpButton.isHidden = true
+                self.enterAsGuestButton.isHidden = true
+                self.logOutButton.isHidden = false
+                self.view.addSubview(self.logOutButton)
+                self.initiateLogOutButton()
 
-            self.emailField.resignFirstResponder()
-            self.passwordField.resignFirstResponder()
+                self.emailField.resignFirstResponder()
+                self.passwordField.resignFirstResponder()
 
-            self.view.backgroundColor = .green
+                self.view.backgroundColor = .blue
             }
         }
     }
@@ -160,32 +168,32 @@ class LoginViewController: UIViewController {
                     message: "You have just created a new account and already loged in.",
                     preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(alert, animated: true, completion: nil)
+                self.present(alert, animated: true, completion: nil)
 
-            Auth.auth().signIn(withEmail: email, password: password)
+                Auth.auth().signIn(withEmail: email, password: password)
 
-            self.milkyLabel.isHidden = true
-            self.emailField.isHidden = true
-            self.passwordField.isHidden = true
-            self.loginButton.isHidden = true
-            self.signUpButton.isHidden = true
-            self.enterAsGuestButton.isHidden = true
-            self.logOutButton.isHidden = false
-            self.view.addSubview(self.logOutButton)
-            self.initiateSignOutButton()
+                self.milkyLabel.isHidden = true
+                self.emailField.isHidden = true
+                self.passwordField.isHidden = true
+                self.loginButton.isHidden = true
+                self.signUpButton.isHidden = true
+                self.enterAsGuestButton.isHidden = true
+                self.logOutButton.isHidden = false
+                self.view.addSubview(self.logOutButton)
+                self.initiateLogOutButton()
 
-            self.emailField.resignFirstResponder()
-            self.passwordField.resignFirstResponder()
-            self.view.backgroundColor = .green
-        } else {
-            print(" ❗️Error in createUser: \(error?.localizedDescription ?? "")")
-            let alert = UIAlertController(
-                title: "Error in createUser:",
-                message: "\(error?.localizedDescription ?? "")",
-                preferredStyle: .alert)
+                self.emailField.resignFirstResponder()
+                self.passwordField.resignFirstResponder()
+                self.view.backgroundColor = .blue
+            } else {
+                print(" ❗️Error in createUser: \(error?.localizedDescription ?? "")")
+                let alert = UIAlertController(
+                    title: "Error in createUser:",
+                    message: "\(error?.localizedDescription ?? "")",
+                    preferredStyle: .alert)
 
-            alert.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(alert, animated: true, completion: nil)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(alert, animated: true, completion: nil)
             }
         }
     }
@@ -219,10 +227,30 @@ class LoginViewController: UIViewController {
             signUpButton.isHidden = true
             enterAsGuestButton.isHidden = true
             logOutButton.isHidden = false
-            view.backgroundColor = .green
+            view.backgroundColor = .blue
 
             view.addSubview(logOutButton)
-            initiateSignOutButton()
+            initiateLogOutButton()
+        }
+    }
+
+    func checkEmailValidation(email: String) {
+        if email.matches(emailRegex) {
+            emailField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 1/255, alpha: 50/255)
+        } else if emailField.text == "" {
+            emailField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 176/255, alpha: 50/255)
+        } else {
+            emailField.backgroundColor = .red
+        }
+    }
+
+    func checkPasswordValidation(password: String) {
+        if password.matches(passRegex) {
+            passwordField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 1/255, alpha: 50/255)
+        } else if passwordField.text == "" {
+            passwordField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 176/255, alpha: 50/255)
+        } else {
+            passwordField.backgroundColor = .red
         }
     }
 }

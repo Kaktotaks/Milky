@@ -15,6 +15,7 @@
 		E4298FC6273BC08B00EB0DAD /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E4298FC5273BC08B00EB0DAD /* FirebaseStorage */; };
 		E4298FCA273BDDF000EB0DAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4298FC9273BDDF000EB0DAD /* GoogleService-Info.plist */; };
 		E45C92D3273EA55A000FD493 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E45C92D2273EA55A000FD493 /* SnapKit */; };
+		E45C92D62742AA1F000FD493 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45C92D52742AA1F000FD493 /* Extensions.swift */; };
 		E48E04CC273D184E0087DDE5 /* MilksList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48E04CB273D184E0087DDE5 /* MilksList.swift */; };
 		E48E04CF273D73F60087DDE5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48E04CE273D73F60087DDE5 /* User.swift */; };
 		E4C5AAA4273A7CC300086437 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C5AAA3273A7CC300086437 /* AppDelegate.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		E4298FC9273BDDF000EB0DAD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E45C92D52742AA1F000FD493 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		E48E04CB273D184E0087DDE5 /* MilksList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilksList.swift; sourceTree = "<group>"; };
 		E48E04CE273D73F60087DDE5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E4C5AAA0273A7CC300086437 /* Milky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Milky.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +107,7 @@
 				E4C5AAA7273A7CC300086437 /* LoginViewController.swift */,
 				E4C5AABB273A7E6300086437 /* LVCConstraints.swift */,
 				E48E04CB273D184E0087DDE5 /* MilksList.swift */,
+				E45C92D52742AA1F000FD493 /* Extensions.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -222,6 +225,7 @@
 				E4C5AAA4273A7CC300086437 /* AppDelegate.swift in Sources */,
 				E48E04CC273D184E0087DDE5 /* MilksList.swift in Sources */,
 				E4C5AAA6273A7CC300086437 /* SceneDelegate.swift in Sources */,
+				E45C92D62742AA1F000FD493 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
