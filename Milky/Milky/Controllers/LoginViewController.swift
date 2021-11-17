@@ -78,15 +78,15 @@ class LoginViewController: UIViewController {
         return value
     }()
 
-    lazy var logOutButton: UIButton = {
-        let value: UIButton = .init()
-        value.backgroundColor = .black
-        value.addTarget(self, action: #selector(logOutButtonTapped), for: .touchUpInside)
-        value.setTitleColor(.white, for: .normal)
-        value.setTitle("Log Out", for: .normal)
-        value.layer.cornerRadius = 10
-        return value
-    }()
+//    lazy var logOutButton: UIButton = {
+//        let value: UIButton = .init()
+//        value.backgroundColor = .black
+//        value.addTarget(self, action: #selector(logOutButtonTapped), for: .touchUpInside)
+//        value.setTitleColor(.white, for: .normal)
+//        value.setTitle("Log Out", for: .normal)
+//        value.layer.cornerRadius = 10
+//        return value
+//    }()
 
     // MARK: - View life cycle
     override func viewDidLoad() {
@@ -131,20 +131,21 @@ class LoginViewController: UIViewController {
             } else if error == nil, user == user {
                 print("You have log in")
 
-                self.self.milkyLabel.isHidden = true
-                self.emailField.isHidden = true
-                self.passwordField.isHidden = true
-                self.loginButton.isHidden = true
-                self.signUpButton.isHidden = true
-                self.enterAsGuestButton.isHidden = true
-                self.logOutButton.isHidden = false
-                self.view.addSubview(self.logOutButton)
-                self.initiateLogOutButton()
-
-                self.emailField.resignFirstResponder()
-                self.passwordField.resignFirstResponder()
-
-                self.view.backgroundColor = .blue
+//                self.milkyLabel.isHidden = true
+//                self.emailField.isHidden = true
+//                self.passwordField.isHidden = true
+//                self.loginButton.isHidden = true
+//                self.signUpButton.isHidden = true
+//                self.enterAsGuestButton.isHidden = true
+//                self.logOutButton.isHidden = false
+//                self.view.addSubview(self.logOutButton)
+//                self.initiateLogOutButton()
+//
+//                self.emailField.resignFirstResponder()
+//                self.passwordField.resignFirstResponder()
+//
+//                self.view.backgroundColor = .blue
+                self.transitionToMLVC()
             }
         }
     }
@@ -172,19 +173,19 @@ class LoginViewController: UIViewController {
 
                 Auth.auth().signIn(withEmail: email, password: password)
 
-                self.milkyLabel.isHidden = true
-                self.emailField.isHidden = true
-                self.passwordField.isHidden = true
-                self.loginButton.isHidden = true
-                self.signUpButton.isHidden = true
-                self.enterAsGuestButton.isHidden = true
-                self.logOutButton.isHidden = false
-                self.view.addSubview(self.logOutButton)
-                self.initiateLogOutButton()
-
-                self.emailField.resignFirstResponder()
-                self.passwordField.resignFirstResponder()
-                self.view.backgroundColor = .blue
+//                self.milkyLabel.isHidden = true
+//                self.emailField.isHidden = true
+//                self.passwordField.isHidden = true
+//                self.loginButton.isHidden = true
+//                self.signUpButton.isHidden = true
+//                self.enterAsGuestButton.isHidden = true
+//                self.logOutButton.isHidden = false
+//                self.view.addSubview(self.logOutButton)
+//                self.initiateLogOutButton()
+//
+//                self.emailField.resignFirstResponder()
+//                self.passwordField.resignFirstResponder()
+//                self.view.backgroundColor = .blue
             } else {
                 print(" ❗️Error in createUser: \(error?.localizedDescription ?? "")")
                 let alert = UIAlertController(
@@ -202,36 +203,50 @@ class LoginViewController: UIViewController {
         print("enterAsGuestButtonPressed")
     }
 
-    @objc func logOutButtonTapped() {
-        do {
-            try FirebaseAuth.Auth.auth().signOut()
-            milkyLabel.isHidden = false
-            emailField.isHidden = false
-            passwordField.isHidden = false
-            loginButton.isHidden = false
-            signUpButton.isHidden = false
-            enterAsGuestButton.isHidden = false
-            view.backgroundColor = .white
-            logOutButton.removeFromSuperview()
-        } catch {
-            print("An error occurred")
-        }
-    }
+//    @objc func logOutButtonTapped() {
+//        do {
+//            try FirebaseAuth.Auth.auth().signOut()
+////            milkyLabel.isHidden = false
+////            emailField.isHidden = false
+////            passwordField.isHidden = false
+////            loginButton.isHidden = false
+////            signUpButton.isHidden = false
+////            enterAsGuestButton.isHidden = false
+////            view.backgroundColor = .white
+////            logOutButton.removeFromSuperview()
+//            // вернуться на экран логина
+//        } catch {
+//            print("An error occurred")
+//        }
+//    }
 
     private func userLogedInUI() {
         if FirebaseAuth.Auth.auth().currentUser != nil {
-            milkyLabel.isHidden = true
-            emailField.isHidden = true
-            passwordField.isHidden = true
-            loginButton.isHidden = true
-            signUpButton.isHidden = true
-            enterAsGuestButton.isHidden = true
-            logOutButton.isHidden = false
-            view.backgroundColor = .blue
+//            milkyLabel.isHidden = true
+//            emailField.isHidden = true
+//            passwordField.isHidden = true
+//            loginButton.isHidden = true
+//            signUpButton.isHidden = true
+//            enterAsGuestButton.isHidden = true
+//            logOutButton.isHidden = false
+//            view.backgroundColor = .blue
+//
+//            view.addSubview(logOutButton)
+//            initiateLogOutButton()
 
-            view.addSubview(logOutButton)
-            initiateLogOutButton()
+//            let milkListVC = MilksListViewController()
+            let milkListVC = UINavigationController(rootViewController: MilksListViewController())
+            milkListVC.modalPresentationStyle = .fullScreen
+            present(milkListVC, animated: false)
         }
+    }
+
+    func transitionToMLVC() {
+//        let milkListVC = MilksListViewController()
+        let milkListVC = UINavigationController(rootViewController: MilksListViewController())
+        milkListVC.modalPresentationStyle = .fullScreen
+        milkListVC.modalTransitionStyle = .flipHorizontal
+        present(milkListVC, animated: true)
     }
 
     func checkEmailValidation(email: String) {

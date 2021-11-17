@@ -61,14 +61,14 @@ extension LoginViewController {
             make.height.equalTo(40)
         }
     }
-// MARK: - func for LogOut button
-    func initiateLogOutButton() {
-        logOutButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.width.equalTo(80)
-            make.bottom.equalToSuperview().inset(40)
-            make.height.equalTo(30)
-        }
-    }
+//// MARK: - func for LogOut button
+//    func initiateLogOutButton() {
+//        logOutButton.snp.makeConstraints { make in
+//            make.centerX.equalToSuperview()
+//            make.width.equalTo(80)
+//            make.bottom.equalToSuperview().inset(40)
+//            make.height.equalTo(30)
+//        }
+//    }
 
 }
