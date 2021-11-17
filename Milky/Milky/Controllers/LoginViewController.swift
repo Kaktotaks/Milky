@@ -11,8 +11,8 @@ import SnapKit
 
 class LoginViewController: UIViewController {
     // MARK: - Variables
+    lazy var emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{1,}"
     lazy var passRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{6,}$"
-    lazy var emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
 
     lazy var milkyLabel: UILabel = {
         let value: UILabel = .init()
@@ -239,12 +239,14 @@ class LoginViewController: UIViewController {
             emailField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 1/255, alpha: 50/255)
         } else if emailField.text == "" {
             emailField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 176/255, alpha: 50/255)
-        } else {
-            emailField.backgroundColor = .red
         }
     }
 
     func checkPasswordValidation(password: String) {
+        guard password.count >= 6 else {
+          return  passwordField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 176/255, alpha: 50/255)
+        }
+
         if password.matches(passRegex) {
             passwordField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 1/255, alpha: 50/255)
         } else if passwordField.text == "" {

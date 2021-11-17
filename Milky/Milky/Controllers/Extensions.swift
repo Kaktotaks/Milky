@@ -22,8 +22,6 @@ extension LoginViewController: UITextFieldDelegate {
         checkEmailValidation(email: res)
         checkPasswordValidation(password: res)
         textField.text = res
-        checkEmailValidation(email: res)
-        checkPasswordValidation(password: res)
         return false
     }
 }
