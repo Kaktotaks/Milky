@@ -15,7 +15,7 @@ class MilksListViewController: UIViewController {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log Out", style: .plain, target: self, action: #selector(logOutButtonTapped))
 
-        view.backgroundColor = .systemCyan
+        view.backgroundColor = .white
         title = "Milky products"
     }
 
