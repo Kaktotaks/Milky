@@ -10,8 +10,8 @@ import FirebaseAuth
 
 class LoginViewController: UIViewController {
     // MARK: - Variables
-    lazy var emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{1,}"
-    lazy var passRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{6,}$"
+    private lazy var emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{1,}"
+    private lazy var passRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{6,}$"
 
     lazy var milkyLabel: UILabel = {
         let value: UILabel = .init()
@@ -57,12 +57,12 @@ class LoginViewController: UIViewController {
         return value
     }()
 
-    lazy var signUpButton: UIButton = {
+    lazy var goToCreateNewAccountButton: UIButton = {
         let value: UIButton = .init()
-        value.backgroundColor = UIColor(red: 252/255, green: 149/255, blue: 107/255, alpha: 1)
-        value.addTarget(self, action: #selector(signUpButtonPressed), for: .touchUpInside)
+        value.backgroundColor = UIColor(red: 215/255, green: 180/255, blue: 149/255, alpha: 1)
+        value.addTarget(self, action: #selector(goToCreateNewAccountButtonPressed), for: .touchUpInside)
         value.setTitleColor(.white, for: .normal)
-        value.setTitle("Sign Up", for: .normal)
+        value.setTitle("Create new account", for: .normal)
         value.layer.cornerRadius = 10
         return value
     }()
@@ -125,47 +125,21 @@ class LoginViewController: UIViewController {
         }
     }
 
-    @objc func signUpButtonPressed(sender: UIButton!) {
-        print("Sign Up button tapped")
-        guard
-            let email = emailField.text,
-            let password = passwordField.text,
-            !email.isEmpty,
-            !password.isEmpty
-        else { return }
+    @objc func goToCreateNewAccountButtonPressed(sender: UIButton!) {
+        print("goToCreateNewAccount button tapped")
 
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self]_, error in
-            guard let self = self else { return }
-
-            if error == nil {
-                print("You have sign in after registration account")
-                let alert = UIAlertController(
-                    title: "Well done 🎉",
-                    message: "You have just created a new account and already loged in.",
-                    preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(alert, animated: true, completion: nil)
-
-                Auth.auth().signIn(withEmail: email, password: password)
-
-            } else {
-                print(" ❗️Error in createUser: \(error?.localizedDescription ?? "")")
-                let alert = UIAlertController(
-                    title: "Error in createUser:",
-                    message: "\(error?.localizedDescription ?? "")",
-                    preferredStyle: .alert)
-
-                alert.addAction(UIAlertAction(title: "OK", style: .default))
-                self.present(alert, animated: true, completion: nil)
-            }
-        }
+        let createAccountVC = UINavigationController(rootViewController: CreateAccountViewController())
+        createAccountVC.modalPresentationStyle = .fullScreen
+        createAccountVC.modalTransitionStyle = .flipHorizontal
+        present(createAccountVC, animated: true)
     }
 
     @objc func enterAsGuestButtonPressed(sender: UIButton!) {
         print("enterAsGuestButtonPressed")
+        //MARK: Enter as a guest
     }
 
-    private func userLogedInUI() {
+    func userLogedInUI() {
         if FirebaseAuth.Auth.auth().currentUser != nil {
             let milkListVC = UINavigationController(rootViewController: MilksListViewController())
             milkListVC.modalPresentationStyle = .fullScreen

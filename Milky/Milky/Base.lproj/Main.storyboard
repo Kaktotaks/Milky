@@ -11,7 +11,6 @@
         <!--Navigation Controller-->
         <scene sceneID="5mq-9g-rJv">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BQ5-yt-FNo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController id="TX0-zz-hCl" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Prg-qw-OW0">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -21,8 +20,24 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="0Bq-h2-a9T"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BQ5-yt-FNo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-901" y="78"/>
+        </scene>
+        <!--Create Account View Controller-->
+        <scene sceneID="aMy-S5-N8z">
+            <objects>
+                <viewController id="MG4-LZ-dYI" customClass="CreateAccountViewController" customModule="Milky" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Bmt-gb-gVy">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="DCt-Xs-bI5"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NAD-XJ-Dei" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="35" y="772"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -43,7 +58,6 @@
         <!--Milks List View Controller-->
         <scene sceneID="1m0-ea-rV4">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="r4R-iH-rMI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tableViewController id="V4l-aw-pQw" customClass="MilksListViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="1jb-SS-Qfa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -65,6 +79,7 @@
                         </connections>
                     </tableView>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="r4R-iH-rMI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="838" y="78"/>
         </scene>

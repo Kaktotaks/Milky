@@ -12,7 +12,7 @@ import UIKit
 extension LoginViewController {
     func setupConstraintsForLoginView() {
     view.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-// MARK: - func for LogIn view
+
         view.addSubview(milkyLabel)
         milkyLabel.snp.makeConstraints { make in
         make.leading.trailing.equalToSuperview().inset(30)
@@ -45,10 +45,10 @@ extension LoginViewController {
             make.height.equalTo(40)
         }
 
-        view.addSubview(signUpButton)
-        signUpButton.snp.makeConstraints { make in
+        view.addSubview(goToCreateNewAccountButton)
+        goToCreateNewAccountButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.width.equalTo(160)
+            make.width.equalTo(200)
             make.top.equalTo(loginButton).inset(50)
             make.height.equalTo(40)
         }
@@ -57,7 +57,7 @@ extension LoginViewController {
         enterAsGuestButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.width.equalTo(160)
-            make.top.equalTo(signUpButton).inset(50)
+            make.top.equalTo(goToCreateNewAccountButton).inset(50)
             make.height.equalTo(40)
         }
     }
