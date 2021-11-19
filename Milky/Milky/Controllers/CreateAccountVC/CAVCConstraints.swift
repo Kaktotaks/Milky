@@ -42,6 +42,5 @@ extension CreateAccountViewController {
             make.top.equalTo(passwordField).inset(60)
             make.height.equalTo(60)
         }
-
     }
 }

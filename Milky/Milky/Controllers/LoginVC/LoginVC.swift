@@ -81,6 +81,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        passwordField.isSecureTextEntry = true
+
         setupConstraintsForLoginView()
         userLogedInUI()
     }
@@ -134,7 +136,7 @@ class LoginViewController: UIViewController {
     @objc func enterAsGuestButtonPressed(sender: UIButton!) {
         print("enterAsGuestButtonPressed")
         transitionToMLVC()
-        //MARK: Enter as a guest
+    // MARK: Enter as a guest
     }
 
     func userLogedInUI() {
