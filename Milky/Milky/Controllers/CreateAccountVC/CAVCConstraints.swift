@@ -11,27 +11,27 @@ import UIKit
 
 extension CreateAccountViewController {
     func setupConstraintsForCreateAccountVC() {
+        view.addSubview(milkyLabel)
+        milkyLabel.snp.makeConstraints { make in
+        make.leading.trailing.equalToSuperview().inset(30)
+        make.width.equalTo(300)
+        make.top.equalToSuperview().inset(80)
+        make.height.equalTo(100)
+        }
+
         view.addSubview(emailField)
         emailField.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.width.equalTo(360)
-            make.top.equalToSuperview().inset(200)
+            make.top.equalTo(milkyLabel).inset(100)
             make.height.equalTo(40)
         }
 
-        view.addSubview(firstPasswordField)
-        firstPasswordField.snp.makeConstraints { make in
+        view.addSubview(passwordField)
+        passwordField.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.width.equalTo(360)
             make.top.equalTo(emailField).inset(50)
-            make.height.equalTo(40)
-        }
-
-        view.addSubview(secondPasswordField)
-        secondPasswordField.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.width.equalTo(360)
-            make.top.equalTo(firstPasswordField).inset(50)
             make.height.equalTo(40)
         }
 
@@ -39,7 +39,7 @@ extension CreateAccountViewController {
         createAccountButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
             make.width.equalTo(200)
-            make.top.equalTo(secondPasswordField).inset(60)
+            make.top.equalTo(passwordField).inset(60)
             make.height.equalTo(60)
         }
 

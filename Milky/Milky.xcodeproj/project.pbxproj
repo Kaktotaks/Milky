@@ -17,7 +17,7 @@
 		E4229E9A27465EA7003E93EA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E4229E9927465EA7003E93EA /* FirebaseFirestore */; };
 		E4229E9C27465EA7003E93EA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E4229E9B27465EA7003E93EA /* FirebaseStorage */; };
 		E4298FCA273BDDF000EB0DAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4298FC9273BDDF000EB0DAD /* GoogleService-Info.plist */; };
-		E45C92D62742AA1F000FD493 /* LoginVCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E45C92D52742AA1F000FD493 /* LoginVCExtensions.swift */; };
+		E440C8F32746B5AF009EDA71 /* MLVCConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E440C8F22746B5AF009EDA71 /* MLVCConstraints.swift */; };
 		E48E04CC273D184E0087DDE5 /* MilksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48E04CB273D184E0087DDE5 /* MilksListViewController.swift */; };
 		E48E04CF273D73F60087DDE5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48E04CE273D73F60087DDE5 /* User.swift */; };
 		E4C5AAA4273A7CC300086437 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C5AAA3273A7CC300086437 /* AppDelegate.swift */; };
@@ -34,7 +34,7 @@
 		E4229E8B27464B3B003E93EA /* CAVCConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAVCConstraints.swift; sourceTree = "<group>"; };
 		E4229E8D27465B13003E93EA /* CreateAccountVCExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVCExtensions.swift; sourceTree = "<group>"; };
 		E4298FC9273BDDF000EB0DAD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		E45C92D52742AA1F000FD493 /* LoginVCExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVCExtensions.swift; sourceTree = "<group>"; };
+		E440C8F22746B5AF009EDA71 /* MLVCConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLVCConstraints.swift; sourceTree = "<group>"; };
 		E48E04CB273D184E0087DDE5 /* MilksListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilksListViewController.swift; sourceTree = "<group>"; };
 		E48E04CE273D73F60087DDE5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		E4C5AAA0273A7CC300086437 /* Milky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Milky.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,7 +70,6 @@
 			children = (
 				E4C5AAA7273A7CC300086437 /* LoginVC.swift */,
 				E4C5AABB273A7E6300086437 /* LVCConstraints.swift */,
-				E45C92D52742AA1F000FD493 /* LoginVCExtensions.swift */,
 			);
 			path = LoginVC;
 			sourceTree = "<group>";
@@ -79,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				E48E04CB273D184E0087DDE5 /* MilksListViewController.swift */,
+				E440C8F22746B5AF009EDA71 /* MLVCConstraints.swift */,
 			);
 			path = MilksListVC;
 			sourceTree = "<group>";
@@ -136,8 +136,8 @@
 		E4C5AAB7273A7CD400086437 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E4229E882746467F003E93EA /* CreateAccountVC */,
 				E4229E862746444F003E93EA /* LoginVC */,
+				E4229E882746467F003E93EA /* CreateAccountVC */,
 				E4229E8727464497003E93EA /* MilksListVC */,
 			);
 			path = Controllers;
@@ -255,10 +255,10 @@
 				E48E04CF273D73F60087DDE5 /* User.swift in Sources */,
 				E4C5AAA4273A7CC300086437 /* AppDelegate.swift in Sources */,
 				E4229E8E27465B13003E93EA /* CreateAccountVCExtensions.swift in Sources */,
+				E440C8F32746B5AF009EDA71 /* MLVCConstraints.swift in Sources */,
 				E4229E8C27464B3B003E93EA /* CAVCConstraints.swift in Sources */,
 				E48E04CC273D184E0087DDE5 /* MilksListViewController.swift in Sources */,
 				E4C5AAA6273A7CC300086437 /* SceneDelegate.swift in Sources */,
-				E45C92D62742AA1F000FD493 /* LoginVCExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,8 +11,18 @@ import FirebaseAuth
 class CreateAccountViewController: UIViewController {
     // MARK: - Variables
 
-    private lazy var emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{1,}"
+    private lazy var emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
     private lazy var passRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{6,}$"
+
+    lazy var milkyLabel: UILabel = {
+        let value: UILabel = .init()
+        value.text = "Milky 🐮"
+        value.textAlignment = .center
+        value.font = UIFont.systemFont(ofSize: 50, weight: .black)
+        value.textColor = UIColor(red: 96/255, green: 148/255, blue: 176/255, alpha: 0.70)
+        value.numberOfLines = 0
+        return value
+    }()
 
     lazy var emailField: UITextField = {
         let value: UITextField = .init()
@@ -26,21 +36,9 @@ class CreateAccountViewController: UIViewController {
         return value
     }()
 
-    lazy var firstPasswordField: UITextField = {
+    lazy var passwordField: UITextField = {
         let value: UITextField = .init()
         value.placeholder = "Create your password"
-        value.font = emailField.font
-        value.backgroundColor = emailField.backgroundColor
-        value.layer.cornerRadius = 10
-        value.autocapitalizationType = .none
-        value.leftViewMode = .always
-        value.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
-        return value
-    }()
-
-    lazy var secondPasswordField: UITextField = {
-        let value: UITextField = .init()
-        value.placeholder = "Repeat the password"
         value.font = emailField.font
         value.backgroundColor = emailField.backgroundColor
         value.layer.cornerRadius = 10
@@ -65,17 +63,16 @@ class CreateAccountViewController: UIViewController {
         super.viewDidLoad()
 
         emailField.delegate = self
-        firstPasswordField.delegate = self
-        secondPasswordField.delegate = self
+        passwordField.delegate = self
 
         view.backgroundColor = .white
         title = "Account creation 👀"
         setupConstraintsForCreateAccountVC()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Go Back", style: .plain, target: self, action: #selector(goBackButtonTapped))
     }
     // MARK: - Functions
 
-    @objc private func cancelButtonTapped() {
+    @objc private func goBackButtonTapped() {
         do {
             dismiss(animated: true, completion: nil)
         } catch {
@@ -87,7 +84,7 @@ class CreateAccountViewController: UIViewController {
         print("createAccountButtonPressed")
         guard
             let email = emailField.text,
-            let password = firstPasswordField.text,
+            let password = passwordField.text,
             !email.isEmpty,
             !password.isEmpty
         else { return }
@@ -96,10 +93,10 @@ class CreateAccountViewController: UIViewController {
             guard let self = self else { return }
 
             if error == nil {
-                print("You have sign in after registration account")
+                print("You have just created a new account. Go back to login.")
                 let alert = UIAlertController(
                     title: "Well done 🎉",
-                    message: "You have just created a new account",
+                    message: "You have just created a new account. Go back to login.",
                     preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alert, animated: true, completion: nil)
@@ -107,9 +104,9 @@ class CreateAccountViewController: UIViewController {
 //                Auth.auth().signIn(withEmail: email, password: password)
 
 //                if FirebaseAuth.Auth.auth().currentUser != nil {
-                    let milkListVC = UINavigationController(rootViewController: MilksListViewController())
-                    milkListVC.modalPresentationStyle = .fullScreen
-                    self.present(milkListVC, animated: false)
+//                    let milkListVC = UINavigationController(rootViewController: MilksListViewController())
+//                    milkListVC.modalPresentationStyle = .fullScreen
+//                    self.present(milkListVC, animated: false)
 //                }
 
             } else {
@@ -135,15 +132,15 @@ class CreateAccountViewController: UIViewController {
 
     func checkPasswordValidation(password: String) {
         guard password.count >= 6 else {
-          return  firstPasswordField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 176/255, alpha: 50/255)
+          return  passwordField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 176/255, alpha: 50/255)
         }
 
         if password.matches(passRegex) {
-            firstPasswordField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 1/255, alpha: 50/255)
-        } else if firstPasswordField.text == "" {
-            firstPasswordField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 176/255, alpha: 50/255)
+            passwordField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 1/255, alpha: 50/255)
+        } else if passwordField.text == "" {
+            passwordField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 176/255, alpha: 50/255)
         } else {
-            firstPasswordField.backgroundColor = .red
+            passwordField.backgroundColor = .red
         }
     }
 }

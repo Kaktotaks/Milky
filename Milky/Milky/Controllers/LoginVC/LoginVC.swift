@@ -81,9 +81,6 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        emailField.delegate = self
-        passwordField.delegate = self
-
         setupConstraintsForLoginView()
         userLogedInUI()
     }
@@ -136,6 +133,7 @@ class LoginViewController: UIViewController {
 
     @objc func enterAsGuestButtonPressed(sender: UIButton!) {
         print("enterAsGuestButtonPressed")
+        transitionToMLVC()
         //MARK: Enter as a guest
     }
 
@@ -152,27 +150,5 @@ class LoginViewController: UIViewController {
         milkListVC.modalPresentationStyle = .fullScreen
         milkListVC.modalTransitionStyle = .flipHorizontal
         present(milkListVC, animated: true)
-    }
-
-    func checkEmailValidation(email: String) {
-        if email.matches(emailRegex) {
-            emailField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 1/255, alpha: 50/255)
-        } else if emailField.text == "" {
-            emailField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 176/255, alpha: 50/255)
-        }
-    }
-
-    func checkPasswordValidation(password: String) {
-        guard password.count >= 6 else {
-          return  passwordField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 176/255, alpha: 50/255)
-        }
-
-        if password.matches(passRegex) {
-            passwordField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 1/255, alpha: 50/255)
-        } else if passwordField.text == "" {
-            passwordField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 176/255, alpha: 50/255)
-        } else {
-            passwordField.backgroundColor = .red
-        }
     }
 }
