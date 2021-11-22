@@ -13,7 +13,7 @@ class ProductCustomTableViewCell: UITableViewCell {
 
     lazy var myBackgroundView: UIView = {
         let myBackgroundView = UIView()
-        myBackgroundView.backgroundColor = UIColor(red: 173/255, green: 216/255, blue: 230/255, alpha: 1)
+        myBackgroundView.backgroundColor = UIColor(red: 173/255, green: 216/255, blue: 230/255, alpha: 0.30)
         return myBackgroundView
     }()
 
@@ -35,7 +35,7 @@ class ProductCustomTableViewCell: UITableViewCell {
 
     lazy var productNameLabel: UILabel = {
         let productNameLabel = UILabel()
-        productNameLabel.textColor = .black
+        productNameLabel.textColor = UIColor(red: 104/255, green: 70/255, blue: 47/255, alpha: 1)
         productNameLabel.font = .systemFont(ofSize: 22, weight: .bold)
         productNameLabel.text = "Milk"
         return productNameLabel
@@ -43,11 +43,10 @@ class ProductCustomTableViewCell: UITableViewCell {
 
     lazy var productInformationLabel: UILabel = {
         let productInformationLabel = UILabel()
-        productInformationLabel.textColor = .black
+        productInformationLabel.textColor = UIColor(red: 104/255, green: 70/255, blue: 47/255, alpha: 1)
         productInformationLabel.font = .systemFont(ofSize: 17, weight: .regular)
         productInformationLabel.text = "Some short information about the product. Some short information about the product."
         productInformationLabel.numberOfLines = 0
-//        productInformationLabel.backgroundColor = .blue
         productInformationLabel.contentMode = .bottomLeft
         return productInformationLabel
     }()
@@ -57,7 +56,7 @@ class ProductCustomTableViewCell: UITableViewCell {
         let productPriceImage = UIImageView()
         productPriceImage.image = UIImage(named: "productPrice")
         productPriceImage.contentMode = .scaleAspectFill
-        productPriceImage.alpha = 0.70
+        productPriceImage.alpha = 0.80
         return productPriceImage
     }()
 
@@ -100,7 +99,7 @@ class ProductCustomTableViewCell: UITableViewCell {
 
         productImageView.snp.makeConstraints { make in
             make.top.bottom.leading.equalTo(myBackgroundView).inset(10)
-            make.width.equalTo(myBackgroundView).inset(120)
+            make.width.equalTo(120)
             make.height.equalTo(myBackgroundView).inset(10)
         }
 
