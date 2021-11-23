@@ -18,10 +18,10 @@
 		E4229E9C27465EA7003E93EA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E4229E9B27465EA7003E93EA /* FirebaseStorage */; };
 		E4298FCA273BDDF000EB0DAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4298FC9273BDDF000EB0DAD /* GoogleService-Info.plist */; };
 		E440C8F32746B5AF009EDA71 /* MLVCConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E440C8F22746B5AF009EDA71 /* MLVCConstraints.swift */; };
-		E4515E62274B93A60061296C /* ProductCTVCellConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4515E61274B93A60061296C /* ProductCTVCellConstraints.swift */; };
 		E478906E27483DED00B5A72B /* ProductCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E478906D27483DED00B5A72B /* ProductCustomTableViewCell.swift */; };
 		E48E04CC273D184E0087DDE5 /* MilksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48E04CB273D184E0087DDE5 /* MilksListViewController.swift */; };
-		E48E04CF273D73F60087DDE5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48E04CE273D73F60087DDE5 /* User.swift */; };
+		E48E04CF273D73F60087DDE5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48E04CE273D73F60087DDE5 /* Product.swift */; };
+		E4B26FB7274D3DAB00E67A8D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = E4B26FB6274D3DAB00E67A8D /* SDWebImage */; };
 		E4C5AAA4273A7CC300086437 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C5AAA3273A7CC300086437 /* AppDelegate.swift */; };
 		E4C5AAA6273A7CC300086437 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C5AAA5273A7CC300086437 /* SceneDelegate.swift */; };
 		E4C5AAA8273A7CC300086437 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C5AAA7273A7CC300086437 /* LoginVC.swift */; };
@@ -37,10 +37,9 @@
 		E4229E8D27465B13003E93EA /* CreateAccountVCExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVCExtensions.swift; sourceTree = "<group>"; };
 		E4298FC9273BDDF000EB0DAD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E440C8F22746B5AF009EDA71 /* MLVCConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLVCConstraints.swift; sourceTree = "<group>"; };
-		E4515E61274B93A60061296C /* ProductCTVCellConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCTVCellConstraints.swift; sourceTree = "<group>"; };
 		E478906D27483DED00B5A72B /* ProductCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCustomTableViewCell.swift; sourceTree = "<group>"; };
 		E48E04CB273D184E0087DDE5 /* MilksListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilksListViewController.swift; sourceTree = "<group>"; };
-		E48E04CE273D73F60087DDE5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E48E04CE273D73F60087DDE5 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		E4C5AAA0273A7CC300086437 /* Milky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Milky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4C5AAA3273A7CC300086437 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4C5AAA5273A7CC300086437 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +59,7 @@
 				E4229E9427465EA7003E93EA /* FirebaseAnalytics in Frameworks */,
 				E4229E9627465EA7003E93EA /* FirebaseAuth in Frameworks */,
 				E4229E9827465EA7003E93EA /* FirebaseDatabase in Frameworks */,
+				E4B26FB7274D3DAB00E67A8D /* SDWebImage in Frameworks */,
 				E4229E9A27465EA7003E93EA /* FirebaseFirestore in Frameworks */,
 				E4229E9127465E1D003E93EA /* SnapKit in Frameworks */,
 				E4229E9C27465EA7003E93EA /* FirebaseStorage in Frameworks */,
@@ -109,7 +109,6 @@
 			isa = PBXGroup;
 			children = (
 				E478906D27483DED00B5A72B /* ProductCustomTableViewCell.swift */,
-				E4515E61274B93A60061296C /* ProductCTVCellConstraints.swift */,
 			);
 			path = ProductCustomTableViewCell;
 			sourceTree = "<group>";
@@ -117,7 +116,7 @@
 		E48E04CD273D73DD0087DDE5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				E48E04CE273D73F60087DDE5 /* User.swift */,
+				E48E04CE273D73F60087DDE5 /* Product.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -189,6 +188,7 @@
 				E4229E9727465EA7003E93EA /* FirebaseDatabase */,
 				E4229E9927465EA7003E93EA /* FirebaseFirestore */,
 				E4229E9B27465EA7003E93EA /* FirebaseStorage */,
+				E4B26FB6274D3DAB00E67A8D /* SDWebImage */,
 			);
 			productName = Milky;
 			productReference = E4C5AAA0273A7CC300086437 /* Milky.app */;
@@ -221,6 +221,7 @@
 			packageReferences = (
 				E4229E8F27465E1D003E93EA /* XCRemoteSwiftPackageReference "SnapKit" */,
 				E4229E9227465EA7003E93EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				E4B26FB5274D3DAB00E67A8D /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = E4C5AAA1273A7CC300086437 /* Products */;
 			projectDirPath = "";
@@ -274,8 +275,7 @@
 				E4C5AABC273A7E6300086437 /* LVCConstraints.swift in Sources */,
 				E4C5AAA8273A7CC300086437 /* LoginVC.swift in Sources */,
 				E4229E8A27464A5D003E93EA /* CreateAccountVC.swift in Sources */,
-				E48E04CF273D73F60087DDE5 /* User.swift in Sources */,
-				E4515E62274B93A60061296C /* ProductCTVCellConstraints.swift in Sources */,
+				E48E04CF273D73F60087DDE5 /* Product.swift in Sources */,
 				E4C5AAA4273A7CC300086437 /* AppDelegate.swift in Sources */,
 				E4229E8E27465B13003E93EA /* CreateAccountVCExtensions.swift in Sources */,
 				E478906E27483DED00B5A72B /* ProductCustomTableViewCell.swift in Sources */,
@@ -520,6 +520,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		E4B26FB5274D3DAB00E67A8D /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -552,6 +560,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E4229E9227465EA7003E93EA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		E4B26FB6274D3DAB00E67A8D /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E4B26FB5274D3DAB00E67A8D /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

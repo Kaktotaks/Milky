@@ -8,6 +8,7 @@
 import Foundation
 import FirebaseAuth
 import UIKit
+import SnapKit
 
 class MilksListViewController: UIViewController {
     private let tableView: UITableView = {
@@ -17,6 +18,9 @@ class MilksListViewController: UIViewController {
         return tableView
     }()
 
+   lazy var cartImage = UIImage(named: "cart")
+   lazy var logoutImage = UIImage(named: "logout")
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,7 +29,8 @@ class MilksListViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logOutButtonTapped))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: logoutImage, style: .plain, target: self, action: #selector(logOutButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartImage, style: .plain, target: self, action: nil)
 
         title = "Products"
     }
@@ -46,11 +51,14 @@ class MilksListViewController: UIViewController {
 
 extension MilksListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return Products.productsList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: ProductCustomTableViewCell.identifier, for: indexPath)
+//        let cell = tableView.dequeueReusableCell(withIdentifier: ProductCustomTableViewCell.identifier, for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductCustomTableViewCell.identifier) as?
+                 ProductCustomTableViewCell else { return UITableViewCell() }
+        cell.configure(with: Products.productsList[indexPath.row])
 
         return cell
     }

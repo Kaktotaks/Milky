@@ -7,6 +7,8 @@
 
 import UIKit
 import SnapKit
+import os
+import SDWebImage
 
 class ProductCustomTableViewCell: UITableViewCell {
     static let identifier = "ProductCustomTableViewCell"
@@ -17,11 +19,13 @@ class ProductCustomTableViewCell: UITableViewCell {
         return myBackgroundView
     }()
 
-    lazy var productSwitch: UISwitch = {
-        let productSwitch = UISwitch()
-        productSwitch.tintColor = .blue
-        productSwitch.isOn = false
-        return productSwitch
+    lazy var addtoBasketButton: UIButton = {
+        let addtoBasket = UIButton()
+        let image = UIImage(named: "add-to-basket") as UIImage?
+        addtoBasket.setImage(image, for: .normal)
+        addtoBasket.backgroundColor = UIColor(red: 103/255, green: 157/255, blue: 70/255, alpha: 0.50)
+        addtoBasket.layer.cornerRadius = 15
+        return addtoBasket
     }()
 
     lazy var productImageView: UIImageView = {
@@ -37,7 +41,6 @@ class ProductCustomTableViewCell: UITableViewCell {
         let productNameLabel = UILabel()
         productNameLabel.textColor = UIColor(red: 104/255, green: 70/255, blue: 47/255, alpha: 1)
         productNameLabel.font = .systemFont(ofSize: 22, weight: .bold)
-        productNameLabel.text = "Milk"
         return productNameLabel
     }()
 
@@ -61,17 +64,17 @@ class ProductCustomTableViewCell: UITableViewCell {
     }()
 
     lazy var productPriceLabel: UILabel = {
-        let productNameLabel = UILabel()
-        productNameLabel.textColor = UIColor(red: 9/255, green: 120/255, blue: 40/255, alpha: 1)
-        productNameLabel.font = .systemFont(ofSize: 17, weight: .heavy)
-        productNameLabel.text = "1.75 $"
-        return productNameLabel
+        let productPriceLabel = UILabel()
+        productPriceLabel.textColor = UIColor(red: 9/255, green: 120/255, blue: 40/255, alpha: 1)
+        productPriceLabel.font = .systemFont(ofSize: 17, weight: .heavy)
+        productPriceLabel.text = "1.75 $"
+        return productPriceLabel
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) { super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .white
         contentView.addSubview(myBackgroundView)
-        myBackgroundView.addSubview(productSwitch)
+        myBackgroundView.addSubview(addtoBasketButton)
         myBackgroundView.addSubview(productNameLabel)
         myBackgroundView.addSubview(productImageView)
         myBackgroundView.addSubview(productInformationLabel)
@@ -85,15 +88,15 @@ class ProductCustomTableViewCell: UITableViewCell {
 
     override func layoutSubviews() { super.layoutSubviews()
 
-        productSwitch.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(10)
-            make.trailing.equalToSuperview().inset(10)
+        addtoBasketButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(15)
+            make.trailing.equalToSuperview().inset(15)
         }
 
         productNameLabel.snp.makeConstraints { make in
-            make.top.equalTo(myBackgroundView).inset(10)
+            make.top.equalTo(myBackgroundView).inset(15)
             make.centerX.equalTo(myBackgroundView)
-            make.width.equalTo(60)
+            make.width.equalTo(90)
             make.height.equalTo(30)
         }
 
@@ -110,7 +113,7 @@ class ProductCustomTableViewCell: UITableViewCell {
 
         productInformationLabel.snp.makeConstraints { make in
             make.top.equalTo(productNameLabel).inset(30)
-            make.leading.equalTo(productImageView).inset(150)
+            make.leading.equalTo(productImageView).inset(135)
             make.trailing.equalTo(myBackgroundView).inset(10)
             make.bottom.equalTo(productPriceImage).inset(10)
         }
@@ -127,6 +130,13 @@ class ProductCustomTableViewCell: UITableViewCell {
             make.bottom.equalToSuperview().inset(20)
             make.height.equalTo(20)
         }
+    }
 
+    func configure(with product: Product) {
+        let imageURL = URL(string: product.productImageURL ?? "")
+        self.productImageView.sd_setImage(with: imageURL, completed: nil)
+        self.productNameLabel.text = product.productName
+        self.productInformationLabel.text = product.productInformation
+        self.productPriceLabel.text = product.productPrice
     }
 }
