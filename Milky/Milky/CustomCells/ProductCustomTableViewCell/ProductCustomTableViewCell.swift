@@ -30,7 +30,6 @@ class ProductCustomTableViewCell: UITableViewCell {
 
     lazy var productImageView: UIImageView = {
         let productImageView = UIImageView()
-        productImageView.image = UIImage(named: "milk1")
         productImageView.contentMode = .scaleAspectFill
         productImageView.clipsToBounds = true
         productImageView.layer.cornerRadius = 25

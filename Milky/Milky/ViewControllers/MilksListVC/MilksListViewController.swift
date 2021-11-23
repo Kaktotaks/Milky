@@ -11,6 +11,9 @@ import UIKit
 import SnapKit
 
 class MilksListViewController: UIViewController {
+    private var products: [Product] = []
+//    private var productList: 
+
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(ProductCustomTableViewCell.self, forCellReuseIdentifier: ProductCustomTableViewCell.identifier)
@@ -55,12 +58,24 @@ extension MilksListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: ProductCustomTableViewCell.identifier, for: indexPath)
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductCustomTableViewCell.identifier) as?
                  ProductCustomTableViewCell else { return UITableViewCell() }
         cell.configure(with: Products.productsList[indexPath.row])
 
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+
+        let identifier = String(describing: ProductDetailsVC.self)
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let detailViewController = storyboard.instantiateViewController(identifier: identifier) as? ProductDetailsVC {
+            detailViewController.product = products[indexPath.row]
+
+            self.navigationController?.pushViewController(detailViewController, animated: true)
+        }
     }
 }
 

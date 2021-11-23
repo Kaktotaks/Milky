@@ -6,7 +6,7 @@
 //
 import UIKit
 // swiftlint:disable all
-struct Products {
+class Products {
     static var productsList: [Product] = [Product(productName: "Alpro",
                                                   productInformation: "This is a natural coconut drink with added soy milk for a thicker consistency. Alpro Coconut For Professionals soy drink infused with coconut aroma fills the body with energy. In addition, the plant-based, low-calorie and lactose-free Alpro Coconut For Original is a wonderful addition to coffee and tea drinks, healthy cocktails and cereals. This lactose-free product will become indispensable for those who do not consume milk. It's easy to be healthy - you should choose only natural for your diet!",
                                                   productLikes: "70",
@@ -80,7 +80,7 @@ struct Products {
     ]
 }
 
-struct Product {
+class Product: NSObject {
     var productName: String
     var productInformation: String
     var productLikes: String
@@ -88,6 +88,25 @@ struct Product {
     var productImageURL: String?
     var companyUrl: String
     var productPrice: String
+    
+    init(
+    productName: String,
+    productInformation: String,
+    productLikes: String,
+    productDislikes: String,
+    productImageURL: String?,
+    companyUrl: String,
+    productPrice: String
+    ) {
+        self.productName = productName
+        self.productInformation = productInformation
+        self.productLikes = productLikes
+        self.productDislikes = productDislikes
+        self.productImageURL = productImageURL
+        self.companyUrl = companyUrl
+        self.productPrice = productPrice
+                super.init()
+    }
 }
 //struct User {
 //    let uid: String

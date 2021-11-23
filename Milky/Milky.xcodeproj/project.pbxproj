@@ -22,6 +22,8 @@
 		E48E04CC273D184E0087DDE5 /* MilksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48E04CB273D184E0087DDE5 /* MilksListViewController.swift */; };
 		E48E04CF273D73F60087DDE5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48E04CE273D73F60087DDE5 /* Product.swift */; };
 		E4B26FB7274D3DAB00E67A8D /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = E4B26FB6274D3DAB00E67A8D /* SDWebImage */; };
+		E4B26FBA274D69D300E67A8D /* ProductDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B26FB9274D69D300E67A8D /* ProductDetailsVC.swift */; };
+		E4B26FBC274D6BE400E67A8D /* ProductDetailsVCConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B26FBB274D6BE400E67A8D /* ProductDetailsVCConstraints.swift */; };
 		E4C5AAA4273A7CC300086437 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C5AAA3273A7CC300086437 /* AppDelegate.swift */; };
 		E4C5AAA6273A7CC300086437 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C5AAA5273A7CC300086437 /* SceneDelegate.swift */; };
 		E4C5AAA8273A7CC300086437 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C5AAA7273A7CC300086437 /* LoginVC.swift */; };
@@ -40,6 +42,8 @@
 		E478906D27483DED00B5A72B /* ProductCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCustomTableViewCell.swift; sourceTree = "<group>"; };
 		E48E04CB273D184E0087DDE5 /* MilksListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilksListViewController.swift; sourceTree = "<group>"; };
 		E48E04CE273D73F60087DDE5 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		E4B26FB9274D69D300E67A8D /* ProductDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsVC.swift; sourceTree = "<group>"; };
+		E4B26FBB274D6BE400E67A8D /* ProductDetailsVCConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsVCConstraints.swift; sourceTree = "<group>"; };
 		E4C5AAA0273A7CC300086437 /* Milky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Milky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4C5AAA3273A7CC300086437 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4C5AAA5273A7CC300086437 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -121,6 +125,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		E4B26FB8274D690300E67A8D /* ProductDetailsVC */ = {
+			isa = PBXGroup;
+			children = (
+				E4B26FB9274D69D300E67A8D /* ProductDetailsVC.swift */,
+				E4B26FBB274D6BE400E67A8D /* ProductDetailsVCConstraints.swift */,
+			);
+			path = ProductDetailsVC;
+			sourceTree = "<group>";
+		};
 		E4C5AA97273A7CC300086437 = {
 			isa = PBXGroup;
 			children = (
@@ -140,8 +153,9 @@
 		E4C5AAA2273A7CC300086437 /* Milky */ = {
 			isa = PBXGroup;
 			children = (
-				E48E04CD273D73DD0087DDE5 /* Models */,
 				E4C5AAB7273A7CD400086437 /* ViewControllers */,
+				E4515E5F274B92FC0061296C /* CustomCells */,
+				E48E04CD273D73DD0087DDE5 /* Models */,
 				E4C5AAA3273A7CC300086437 /* AppDelegate.swift */,
 				E4C5AAA5273A7CC300086437 /* SceneDelegate.swift */,
 				E4C5AAA9273A7CC300086437 /* Main.storyboard */,
@@ -156,10 +170,10 @@
 		E4C5AAB7273A7CD400086437 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				E4B26FB8274D690300E67A8D /* ProductDetailsVC */,
 				E4229E862746444F003E93EA /* LoginVC */,
 				E4229E882746467F003E93EA /* CreateAccountVC */,
 				E4229E8727464497003E93EA /* MilksListVC */,
-				E4515E5F274B92FC0061296C /* CustomCells */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -277,8 +291,10 @@
 				E4229E8A27464A5D003E93EA /* CreateAccountVC.swift in Sources */,
 				E48E04CF273D73F60087DDE5 /* Product.swift in Sources */,
 				E4C5AAA4273A7CC300086437 /* AppDelegate.swift in Sources */,
+				E4B26FBA274D69D300E67A8D /* ProductDetailsVC.swift in Sources */,
 				E4229E8E27465B13003E93EA /* CreateAccountVCExtensions.swift in Sources */,
 				E478906E27483DED00B5A72B /* ProductCustomTableViewCell.swift in Sources */,
+				E4B26FBC274D6BE400E67A8D /* ProductDetailsVCConstraints.swift in Sources */,
 				E440C8F32746B5AF009EDA71 /* MLVCConstraints.swift in Sources */,
 				E4229E8C27464B3B003E93EA /* CAVCConstraints.swift in Sources */,
 				E48E04CC273D184E0087DDE5 /* MilksListViewController.swift in Sources */,
