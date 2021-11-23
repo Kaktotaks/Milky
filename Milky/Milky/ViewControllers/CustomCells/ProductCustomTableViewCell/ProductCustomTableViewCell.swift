@@ -40,7 +40,7 @@ class ProductCustomTableViewCell: UITableViewCell {
     lazy var productNameLabel: UILabel = {
         let productNameLabel = UILabel()
         productNameLabel.textColor = UIColor(red: 104/255, green: 70/255, blue: 47/255, alpha: 1)
-        productNameLabel.font = .systemFont(ofSize: 22, weight: .bold)
+        productNameLabel.font = .systemFont(ofSize: 20, weight: .bold)
         return productNameLabel
     }()
 
@@ -49,7 +49,7 @@ class ProductCustomTableViewCell: UITableViewCell {
         productInformationLabel.textColor = UIColor(red: 104/255, green: 70/255, blue: 47/255, alpha: 1)
         productInformationLabel.font = .systemFont(ofSize: 17, weight: .regular)
         productInformationLabel.text = "Some short information about the product. Some short information about the product."
-        productInformationLabel.numberOfLines = 0
+        productInformationLabel.numberOfLines = 5
         productInformationLabel.contentMode = .bottomLeft
         return productInformationLabel
     }()
@@ -96,7 +96,7 @@ class ProductCustomTableViewCell: UITableViewCell {
         productNameLabel.snp.makeConstraints { make in
             make.top.equalTo(myBackgroundView).inset(15)
             make.centerX.equalTo(myBackgroundView)
-            make.width.equalTo(90)
+            make.width.equalTo(100)
             make.height.equalTo(30)
         }
 
