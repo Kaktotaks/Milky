@@ -35,7 +35,7 @@ var product: Product? = nil
         addtoBasket.layer.cornerRadius = 15
         return addtoBasket
     }()
-    
+
     lazy var productPriceImage: UIImageView = {
         let productPriceImage = UIImageView()
         productPriceImage.image = UIImage(named: "productPrice")
@@ -56,8 +56,52 @@ var product: Product? = nil
         productInformationLabel.textColor = UIColor(red: 104/255, green: 70/255, blue: 47/255, alpha: 1)
         productInformationLabel.font = .systemFont(ofSize: 17, weight: .regular)
         productInformationLabel.numberOfLines = 0
-        productInformationLabel.contentMode = .bottomLeft
+        productInformationLabel.contentMode = .scaleAspectFill
+        productInformationLabel.backgroundColor = UIColor(red: 173/255, green: 216/255, blue: 230/255, alpha: 0.30)
+        productInformationLabel.layer.cornerRadius = 15
+        productInformationLabel.clipsToBounds = true
         return productInformationLabel
+    }()
+
+    lazy var likeButton: UIButton = {
+        let likeButton = UIButton()
+        let image = UIImage(named: "like") as UIImage?
+        likeButton.setImage(image, for: .normal)
+        likeButton.backgroundColor = UIColor(red: 103/255, green: 157/255, blue: 70/255, alpha: 0.50)
+        likeButton.layer.cornerRadius = 15
+        return likeButton
+    }()
+
+    lazy var dislikeButton: UIButton = {
+        let dislikeButton = UIButton()
+        let image = UIImage(named: "dislike") as UIImage?
+        dislikeButton.setImage(image, for: .normal)
+        dislikeButton.backgroundColor = UIColor(red: 254/255, green: 54/255, blue: 100/255, alpha: 0.50)
+        dislikeButton.layer.cornerRadius = 15
+        return dislikeButton
+    }()
+
+    lazy var likesLabel: UILabel = {
+        let likesLabel = UILabel()
+        likesLabel.textColor = likeButton.backgroundColor
+        likesLabel.font = .systemFont(ofSize: 17, weight: .heavy)
+        return likesLabel
+    }()
+
+    lazy var dislikesLabel: UILabel = {
+        let dislikesLabel = UILabel()
+        dislikesLabel.textColor = dislikeButton.backgroundColor
+        dislikesLabel.font = .systemFont(ofSize: 17, weight: .heavy)
+        return dislikesLabel
+    }()
+    
+    lazy var safariButton: UIButton = {
+        let safariButton = UIButton()
+        let image = UIImage(named: "safari") as UIImage?
+        safariButton.setImage(image, for: .normal)
+        safariButton.backgroundColor = productInformationLabel.backgroundColor
+        safariButton.layer.cornerRadius = 15
+        return safariButton
     }()
 
     override func viewDidLoad() { super.viewDidLoad()
@@ -75,5 +119,7 @@ var product: Product? = nil
         self.productImageView.sd_setImage(with: imageURL, completed: nil)
         self.productPriceLabel.text = product?.productPrice
         self.productInformationLabel.text = product?.productInformation
+        self.likesLabel.text = product?.productLikes
+        self.dislikesLabel.text = product?.productDislikes
     }
 }
