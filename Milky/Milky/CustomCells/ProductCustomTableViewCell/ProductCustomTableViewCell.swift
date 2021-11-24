@@ -136,4 +136,11 @@ class ProductCustomTableViewCell: UITableViewCell {
         self.productInformationLabel.text = product.productInformation
         self.productPriceLabel.text = product.productPrice
     }
+
+    func configureRealm(with basketProductsRealm: BasketProductsRealm){
+        self.productNameLabel.text = basketProductsRealm.productName
+        self.productInformationLabel.text = basketProductsRealm.productInformation
+        self.productPriceLabel.text = basketProductsRealm.productPrice
+//    @objc dynamic var productImageURL: String = ""
+    }
 }

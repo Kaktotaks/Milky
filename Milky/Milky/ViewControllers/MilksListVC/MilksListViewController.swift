@@ -32,7 +32,7 @@ class MilksListViewController: UIViewController {
         tableView.dataSource = self
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: logoutImage, style: .plain, target: self, action: #selector(logOutButtonTapped))
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartImage, style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartImage, style: .plain, target: self, action: #selector(goToBasket))
         // MARK: - Add action to cartImage
 
         title = "Products"
@@ -49,6 +49,15 @@ class MilksListViewController: UIViewController {
         } catch {
             print("An error occurred")
         }
+    }
+
+    @objc func goToBasket(sender: UIButton!) {
+        print("Basket tapped")
+
+        let basketVC = UINavigationController(rootViewController: BasketVC())
+//        basketVC.modalPresentationStyle = .fullScreen
+        basketVC.modalTransitionStyle = .coverVertical
+        present(basketVC, animated: true)
     }
 }
 
