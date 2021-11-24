@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import SafariServices
 
 class ProductDetailsVC: UIViewController {
 var product: Product? = nil
@@ -31,7 +32,7 @@ var product: Product? = nil
         let addtoBasket = UIButton()
         let image = UIImage(named: "add-to-basket") as UIImage?
         addtoBasket.setImage(image, for: .normal)
-        addtoBasket.backgroundColor = UIColor(red: 103/255, green: 157/255, blue: 70/255, alpha: 0.50)
+        addtoBasket.backgroundColor = productInformationLabel.backgroundColor
         addtoBasket.layer.cornerRadius = 15
         return addtoBasket
     }()
@@ -94,13 +95,14 @@ var product: Product? = nil
         dislikesLabel.font = .systemFont(ofSize: 17, weight: .heavy)
         return dislikesLabel
     }()
-    
+
     lazy var safariButton: UIButton = {
         let safariButton = UIButton()
         let image = UIImage(named: "safari") as UIImage?
         safariButton.setImage(image, for: .normal)
         safariButton.backgroundColor = productInformationLabel.backgroundColor
         safariButton.layer.cornerRadius = 15
+        safariButton.addTarget(self, action: #selector(safariButtonPressed), for: .touchUpInside)
         return safariButton
     }()
 
@@ -121,5 +123,17 @@ var product: Product? = nil
         self.productInformationLabel.text = product?.productInformation
         self.likesLabel.text = product?.productLikes
         self.dislikesLabel.text = product?.productDislikes
+    }
+
+    @objc func safariButtonPressed(sender: UIButton!) {
+        if let productsURLString = self.product?.companyUrl {
+            if let productsURL = URL(string: productsURLString){
+                let config = SFSafariViewController.Configuration()
+                config.entersReaderIfAvailable = true
+
+                let web = SFSafariViewController(url: productsURL, configuration: config)
+                present(web, animated: true)
+            }
+        }
     }
 }
