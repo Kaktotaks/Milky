@@ -17,7 +17,6 @@
 		E4229E9A27465EA7003E93EA /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = E4229E9927465EA7003E93EA /* FirebaseFirestore */; };
 		E4229E9C27465EA7003E93EA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E4229E9B27465EA7003E93EA /* FirebaseStorage */; };
 		E4298FCA273BDDF000EB0DAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4298FC9273BDDF000EB0DAD /* GoogleService-Info.plist */; };
-		E440C8F32746B5AF009EDA71 /* MLVCConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E440C8F22746B5AF009EDA71 /* MLVCConstraints.swift */; };
 		E478906E27483DED00B5A72B /* ProductCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E478906D27483DED00B5A72B /* ProductCustomTableViewCell.swift */; };
 		E48E04CC273D184E0087DDE5 /* MilksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48E04CB273D184E0087DDE5 /* MilksListViewController.swift */; };
 		E48E04CF273D73F60087DDE5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48E04CE273D73F60087DDE5 /* Product.swift */; };
@@ -38,7 +37,6 @@
 		E4229E8B27464B3B003E93EA /* CAVCConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAVCConstraints.swift; sourceTree = "<group>"; };
 		E4229E8D27465B13003E93EA /* CreateAccountVCExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVCExtensions.swift; sourceTree = "<group>"; };
 		E4298FC9273BDDF000EB0DAD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		E440C8F22746B5AF009EDA71 /* MLVCConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLVCConstraints.swift; sourceTree = "<group>"; };
 		E478906D27483DED00B5A72B /* ProductCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCustomTableViewCell.swift; sourceTree = "<group>"; };
 		E48E04CB273D184E0087DDE5 /* MilksListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilksListViewController.swift; sourceTree = "<group>"; };
 		E48E04CE273D73F60087DDE5 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -86,7 +84,6 @@
 			isa = PBXGroup;
 			children = (
 				E48E04CB273D184E0087DDE5 /* MilksListViewController.swift */,
-				E440C8F22746B5AF009EDA71 /* MLVCConstraints.swift */,
 			);
 			path = MilksListVC;
 			sourceTree = "<group>";
@@ -295,7 +292,6 @@
 				E4229E8E27465B13003E93EA /* CreateAccountVCExtensions.swift in Sources */,
 				E478906E27483DED00B5A72B /* ProductCustomTableViewCell.swift in Sources */,
 				E4B26FBC274D6BE400E67A8D /* ProductDetailsVCConstraints.swift in Sources */,
-				E440C8F32746B5AF009EDA71 /* MLVCConstraints.swift in Sources */,
 				E4229E8C27464B3B003E93EA /* CAVCConstraints.swift in Sources */,
 				E48E04CC273D184E0087DDE5 /* MilksListViewController.swift in Sources */,
 				E4C5AAA6273A7CC300086437 /* SceneDelegate.swift in Sources */,

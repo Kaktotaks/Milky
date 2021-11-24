@@ -12,7 +12,6 @@ import SnapKit
 
 class MilksListViewController: UIViewController {
     private var products: [Product] = []
-//    private var productList: 
 
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -34,6 +33,7 @@ class MilksListViewController: UIViewController {
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: logoutImage, style: .plain, target: self, action: #selector(logOutButtonTapped))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartImage, style: .plain, target: self, action: nil)
+        // MARK: - Add action to cartImage
 
         title = "Products"
     }
@@ -81,7 +81,7 @@ extension MilksListViewController: UITableViewDataSource {
 
 extension MilksListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
+        return 270
     }
 
     // Appearing cells animation

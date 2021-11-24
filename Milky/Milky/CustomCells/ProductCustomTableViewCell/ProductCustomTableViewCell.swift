@@ -47,7 +47,6 @@ class ProductCustomTableViewCell: UITableViewCell {
         let productInformationLabel = UILabel()
         productInformationLabel.textColor = UIColor(red: 104/255, green: 70/255, blue: 47/255, alpha: 1)
         productInformationLabel.font = .systemFont(ofSize: 17, weight: .regular)
-        productInformationLabel.text = "Some short information about the product. Some short information about the product."
         productInformationLabel.numberOfLines = 5
         productInformationLabel.contentMode = .bottomLeft
         return productInformationLabel
@@ -66,7 +65,6 @@ class ProductCustomTableViewCell: UITableViewCell {
         let productPriceLabel = UILabel()
         productPriceLabel.textColor = UIColor(red: 9/255, green: 120/255, blue: 40/255, alpha: 1)
         productPriceLabel.font = .systemFont(ofSize: 17, weight: .heavy)
-        productPriceLabel.text = "1.75 $"
         return productPriceLabel
     }()
 
