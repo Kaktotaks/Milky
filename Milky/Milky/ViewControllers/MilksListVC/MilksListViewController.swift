@@ -72,7 +72,7 @@ extension MilksListViewController: UITableViewDataSource {
 
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let detailViewController = storyboard.instantiateViewController(identifier: identifier) as? ProductDetailsVC {
-            detailViewController.product = products[indexPath.row]
+            detailViewController.product = Products.productsList[indexPath.row]
 
             self.navigationController?.pushViewController(detailViewController, animated: true)
         }
@@ -81,7 +81,7 @@ extension MilksListViewController: UITableViewDataSource {
 
 extension MilksListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return  250
+        return 250
     }
 
     // Appearing cells animation
