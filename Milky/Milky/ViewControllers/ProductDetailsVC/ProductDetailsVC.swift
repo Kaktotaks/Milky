@@ -119,7 +119,6 @@ class ProductDetailsVC: UIViewController {
         print("Basket tapped")
 
         let basketVC = UINavigationController(rootViewController: BasketVC())
-//        basketVC.modalPresentationStyle = .fullScreen
         basketVC.modalTransitionStyle = .coverVertical
         present(basketVC, animated: true)
     }

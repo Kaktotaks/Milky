@@ -138,19 +138,10 @@ class ProductCustomTableViewCell: UITableViewCell {
         self.productPriceLabel.text = product.productPrice
     }
 
-    func configureRealm(with basketProductsRealm: BasketProductsRealm) {
-        let imageURL = URL(string: product?.productImageURL ?? "")
+    func configureRealm(with basketProductsRealm: BasketProductsRealm, imageURL: URL?) {
         self.productImageView.sd_setImage(with: imageURL, completed: nil)
         self.productNameLabel.text = basketProductsRealm.productName
         self.productInformationLabel.text = basketProductsRealm.productInformation
         self.productPriceLabel.text = basketProductsRealm.productPrice
     }
-    
-//    func tvShowConfigureWith(imageURL: URL?, productName: String?, informationText: String?, productPrice: String?) {
-//        self.productNameLabel.text = productName
-//        self.productInformationLabel.text = informationText
-//        self.productPriceLabel.text = productPrice
-//        self.productImageView.sd_setImage(with: imageURL, completed: nil)
-////        self.setupUI()
-//    }
 }

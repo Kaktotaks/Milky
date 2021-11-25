@@ -185,11 +185,11 @@
 		E4C5AAB7273A7CD400086437 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				E4B26FC2274E914E00E67A8D /* BasketVC */,
-				E4B26FB8274D690300E67A8D /* ProductDetailsVC */,
 				E4229E862746444F003E93EA /* LoginVC */,
 				E4229E882746467F003E93EA /* CreateAccountVC */,
 				E4229E8727464497003E93EA /* MilksListVC */,
+				E4B26FB8274D690300E67A8D /* ProductDetailsVC */,
+				E4B26FC2274E914E00E67A8D /* BasketVC */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";

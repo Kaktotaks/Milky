@@ -13,7 +13,6 @@ import RealmSwift
 
 class MilksListViewController: UIViewController {
     private var products: [Product] = []
-//    private var product: Product? = nil
     let realm = try? Realm()
 
     private let tableView: UITableView = {
@@ -36,7 +35,6 @@ class MilksListViewController: UIViewController {
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: logoutImage, style: .plain, target: self, action: #selector(logOutButtonTapped))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartImage, style: .plain, target: self, action: #selector(goToBasket))
-        // MARK: - Add action to cartImage
 
         title = "Products"
     }

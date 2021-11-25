@@ -59,26 +59,17 @@ extension BasketVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductCustomTableViewCell.identifier) as? ProductCustomTableViewCell else { return UITableViewCell() }
-        cell.configureRealm(with: products[indexPath.row])
-//        let productsUI = self.products[indexPath.row]
-//        let productsImageString = productsUI.productImageURL
+        let productImageURLString = self.products[indexPath.row].productImageURL
+        cell.configureRealm(with: products[indexPath.row], imageURL: URL(string: productImageURLString))
+
+//        let productImageURLString = self.products[indexPath.row].productImageURL
+//        cell.productImageConfigureWith(imageURL: URL(string: productImageURLString))
         return cell
     }
 
 }
 
 extension BasketVC: UITableViewDelegate {
-    // Appearing cells animation
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, 0, 50, 0)
-        cell.layer.transform = rotationTransform
-        cell.alpha = 0
-        UIView.animate(withDuration: 0.75) {
-            cell.layer.transform = CATransform3DIdentity
-            cell.alpha = 1.0
-        }
-    }
-
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
