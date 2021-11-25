@@ -108,15 +108,15 @@ class Product: NSObject {
                 super.init()
     }
     
-    init(from BasketProductsRealm: BasketProductsRealm) {
-        self.productName = BasketProductsRealm.productName
-        self.productInformation = BasketProductsRealm.productInformation
-        self.productLikes = BasketProductsRealm.productLikes
-        self.productDislikes = BasketProductsRealm.productDislikes
-        self.productImageURL = BasketProductsRealm.productImageURL
-        self.companyUrl = BasketProductsRealm.companyUrl
-        self.productPrice = BasketProductsRealm.productPrice
-    }
+//    init(from BasketProductsRealm: BasketProductsRealm) {
+//        self.productName = BasketProductsRealm.productName
+//        self.productInformation = BasketProductsRealm.productInformation
+//        self.productLikes = BasketProductsRealm.productLikes
+//        self.productDislikes = BasketProductsRealm.productDislikes
+//        self.productImageURL = BasketProductsRealm.productImageURL
+//        self.companyUrl = BasketProductsRealm.companyUrl
+//        self.productPrice = BasketProductsRealm.productPrice
+//    }
 }
 //struct User {
 //    let uid: String

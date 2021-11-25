@@ -7,11 +7,12 @@
 
 import UIKit
 import SnapKit
-import os
 import SDWebImage
 
 class ProductCustomTableViewCell: UITableViewCell {
     static let identifier = "ProductCustomTableViewCell"
+    private var product: Product? = nil
+//    let realm = try? Realm()
 
     lazy var myBackgroundView: UIView = {
         let myBackgroundView = UIView()
@@ -137,10 +138,19 @@ class ProductCustomTableViewCell: UITableViewCell {
         self.productPriceLabel.text = product.productPrice
     }
 
-    func configureRealm(with basketProductsRealm: BasketProductsRealm){
+    func configureRealm(with basketProductsRealm: BasketProductsRealm) {
+        let imageURL = URL(string: product?.productImageURL ?? "")
+        self.productImageView.sd_setImage(with: imageURL, completed: nil)
         self.productNameLabel.text = basketProductsRealm.productName
         self.productInformationLabel.text = basketProductsRealm.productInformation
         self.productPriceLabel.text = basketProductsRealm.productPrice
-//    @objc dynamic var productImageURL: String = ""
     }
+    
+//    func tvShowConfigureWith(imageURL: URL?, productName: String?, informationText: String?, productPrice: String?) {
+//        self.productNameLabel.text = productName
+//        self.productInformationLabel.text = informationText
+//        self.productPriceLabel.text = productPrice
+//        self.productImageView.sd_setImage(with: imageURL, completed: nil)
+////        self.setupUI()
+//    }
 }

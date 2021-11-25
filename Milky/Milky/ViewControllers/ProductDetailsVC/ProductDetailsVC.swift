@@ -7,10 +7,12 @@
 
 import UIKit
 import SDWebImage
+import RealmSwift
 import SafariServices
 
 class ProductDetailsVC: UIViewController {
-var product: Product? = nil
+    var product: Product? = nil
+    let realm = try? Realm()
 
     lazy var cartImage = UIImage(named: "cart")
 
@@ -33,6 +35,7 @@ var product: Product? = nil
         let image = UIImage(named: "add-to-basket") as UIImage?
         addtoBasket.setImage(image, for: .normal)
         addtoBasket.backgroundColor = productInformationLabel.backgroundColor
+        addtoBasket.addTarget(self, action: #selector(addToBasketButtonPressed), for: .touchUpInside)
         addtoBasket.layer.cornerRadius = 15
         return addtoBasket
     }()
@@ -107,9 +110,18 @@ var product: Product? = nil
     }()
 
     override func viewDidLoad() { super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartImage, style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartImage, style: .plain, target: self, action: #selector(goToBasket))
         self.title = self.product?.productName
         configureDetailVC()
+    }
+
+    @objc func goToBasket(sender: UIButton!) {
+        print("Basket tapped")
+
+        let basketVC = UINavigationController(rootViewController: BasketVC())
+//        basketVC.modalPresentationStyle = .fullScreen
+        basketVC.modalTransitionStyle = .coverVertical
+        present(basketVC, animated: true)
     }
 
     override func viewDidLayoutSubviews() { super.viewDidLayoutSubviews()
@@ -123,6 +135,34 @@ var product: Product? = nil
         self.productInformationLabel.text = product?.productInformation
         self.likesLabel.text = product?.productLikes
         self.dislikesLabel.text = product?.productDislikes
+    }
+
+    @objc func addToBasketButtonPressed(_ sender: Any) {
+        let productRealm = BasketProductsRealm()
+
+        productRealm.productName = self.product?.productName ?? ""
+        productRealm.productInformation = self.product?.productInformation ?? ""
+        productRealm.productPrice = self.product?.productPrice ?? ""
+        productRealm.companyUrl = self.product?.companyUrl ?? ""
+        productRealm.productLikes = self.product?.productLikes ?? ""
+        productRealm.productDislikes = self.product?.productDislikes ?? ""
+        productRealm.productImageURL = self.product?.productImageURL ?? ""
+
+        try? realm?.write {
+            realm?.add(productRealm)
+        }
+        self.showAlert()
+    }
+
+    // Alert func when place added to basket
+    func showAlert() {
+        let alert = UIAlertController(title: "Product added to 🛒", message: nil, preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { action in
+            print("tapped Ok")
+        }))
+
+        present(alert, animated: true)
     }
 
     @objc func safariButtonPressed(sender: UIButton!) {

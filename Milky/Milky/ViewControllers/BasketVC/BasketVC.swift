@@ -9,32 +9,27 @@ import UIKit
 import RealmSwift
 
 class BasketVC: UIViewController {
-    lazy var products: [BasketProductsRealm] = []
+    var products: [BasketProductsRealm] = []
 
     let realm = try? Realm()
 
-    private let tableView: UITableView = {
+     lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(ProductCustomTableViewCell.self, forCellReuseIdentifier: ProductCustomTableViewCell.identifier)
+        tableView.backgroundColor = .white
         tableView.separatorStyle = .none
         return tableView
     }()
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewDidLoad() { super.viewDidLoad()
+        setupConstraintsForBasketVC()
 
-        view.addSubview(tableView)
-        tableView.backgroundColor = .white
         tableView.delegate = self
         tableView.dataSource = self
 
-        self.title = "Basket 🐮"
+        self.title = "🛒"
 
-        self.tableView.register(UINib(nibName: ProductCustomTableViewCell.identifier, bundle: nil), forCellReuseIdentifier: ProductCustomTableViewCell.identifier)
-    }
-
-    override func viewDidLayoutSubviews() {super.viewDidLayoutSubviews()
-        tableView.frame = view.bounds
+        self.tableView.register(ProductCustomTableViewCell.self, forCellReuseIdentifier: ProductCustomTableViewCell.identifier)
+        view.addSubview(tableView)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -65,6 +60,8 @@ extension BasketVC: UITableViewDataSource {
 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductCustomTableViewCell.identifier) as? ProductCustomTableViewCell else { return UITableViewCell() }
         cell.configureRealm(with: products[indexPath.row])
+//        let productsUI = self.products[indexPath.row]
+//        let productsImageString = productsUI.productImageURL
         return cell
     }
 
@@ -89,10 +86,13 @@ extension BasketVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             tableView.beginUpdates()
-
             products.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             tableView.endUpdates()
         }
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 270
     }
 }

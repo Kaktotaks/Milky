@@ -26,6 +26,7 @@
 		E4B26FBE274E8C4500E67A8D /* BasketProductsRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B26FBD274E8C4500E67A8D /* BasketProductsRealm.swift */; };
 		E4B26FC1274E8E4C00E67A8D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = E4B26FC0274E8E4C00E67A8D /* RealmSwift */; };
 		E4B26FC4274E91D200E67A8D /* BasketVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B26FC3274E91D200E67A8D /* BasketVC.swift */; };
+		E4B26FC6274FE5C000E67A8D /* BasketVCConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B26FC5274FE5C000E67A8D /* BasketVCConstraints.swift */; };
 		E4C5AAA4273A7CC300086437 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C5AAA3273A7CC300086437 /* AppDelegate.swift */; };
 		E4C5AAA6273A7CC300086437 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C5AAA5273A7CC300086437 /* SceneDelegate.swift */; };
 		E4C5AAA8273A7CC300086437 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C5AAA7273A7CC300086437 /* LoginVC.swift */; };
@@ -47,6 +48,7 @@
 		E4B26FBB274D6BE400E67A8D /* ProductDetailsVCConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailsVCConstraints.swift; sourceTree = "<group>"; };
 		E4B26FBD274E8C4500E67A8D /* BasketProductsRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketProductsRealm.swift; sourceTree = "<group>"; };
 		E4B26FC3274E91D200E67A8D /* BasketVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketVC.swift; sourceTree = "<group>"; };
+		E4B26FC5274FE5C000E67A8D /* BasketVCConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketVCConstraints.swift; sourceTree = "<group>"; };
 		E4C5AAA0273A7CC300086437 /* Milky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Milky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4C5AAA3273A7CC300086437 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E4C5AAA5273A7CC300086437 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				E4B26FC3274E91D200E67A8D /* BasketVC.swift */,
+				E4B26FC5274FE5C000E67A8D /* BasketVCConstraints.swift */,
 			);
 			path = BasketVC;
 			sourceTree = "<group>";
@@ -311,6 +314,7 @@
 				E4229E8E27465B13003E93EA /* CreateAccountVCExtensions.swift in Sources */,
 				E478906E27483DED00B5A72B /* ProductCustomTableViewCell.swift in Sources */,
 				E4B26FBC274D6BE400E67A8D /* ProductDetailsVCConstraints.swift in Sources */,
+				E4B26FC6274FE5C000E67A8D /* BasketVCConstraints.swift in Sources */,
 				E4229E8C27464B3B003E93EA /* CAVCConstraints.swift in Sources */,
 				E48E04CC273D184E0087DDE5 /* MilksListViewController.swift in Sources */,
 				E4B26FC4274E91D200E67A8D /* BasketVC.swift in Sources */,

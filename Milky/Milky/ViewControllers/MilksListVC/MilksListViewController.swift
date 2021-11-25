@@ -9,13 +9,15 @@ import Foundation
 import FirebaseAuth
 import UIKit
 import SnapKit
+import RealmSwift
 
 class MilksListViewController: UIViewController {
     private var products: [Product] = []
+//    private var product: Product? = nil
+    let realm = try? Realm()
 
     private let tableView: UITableView = {
         let tableView = UITableView()
-        tableView.register(ProductCustomTableViewCell.self, forCellReuseIdentifier: ProductCustomTableViewCell.identifier)
         tableView.separatorStyle = .none
         return tableView
     }()
@@ -26,6 +28,7 @@ class MilksListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.tableView.register(ProductCustomTableViewCell.self, forCellReuseIdentifier: ProductCustomTableViewCell.identifier)
         view.addSubview(tableView)
         tableView.backgroundColor = .white
         tableView.delegate = self
@@ -59,6 +62,7 @@ class MilksListViewController: UIViewController {
         basketVC.modalTransitionStyle = .coverVertical
         present(basketVC, animated: true)
     }
+
 }
 
 extension MilksListViewController: UITableViewDataSource {
