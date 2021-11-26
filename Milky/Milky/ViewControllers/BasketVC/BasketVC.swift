@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import Firebase
 
 class BasketVC: UIViewController {
     var products: [BasketProductsRealm] = []
@@ -35,8 +36,12 @@ class BasketVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        self.products = self.getProducts()
-        self.tableView.reloadData()
+        if FirebaseAuth.Auth.auth().currentUser != nil {
+            self.products = self.getProducts()
+            self.tableView.reloadData()
+        } else {
+            return
+        }
     }
 
     private func getProducts() -> [BasketProductsRealm] {
@@ -62,8 +67,6 @@ extension BasketVC: UITableViewDataSource {
         let productImageURLString = self.products[indexPath.row].productImageURL
         cell.configureRealm(with: products[indexPath.row], imageURL: URL(string: productImageURLString))
 
-//        let productImageURLString = self.products[indexPath.row].productImageURL
-//        cell.productImageConfigureWith(imageURL: URL(string: productImageURLString))
         return cell
     }
 
