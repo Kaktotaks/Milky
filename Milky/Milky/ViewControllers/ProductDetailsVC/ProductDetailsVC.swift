@@ -9,6 +9,7 @@ import UIKit
 import SDWebImage
 import RealmSwift
 import SafariServices
+import Firebase
 
 class ProductDetailsVC: UIViewController {
     var product: Product? = nil
@@ -137,25 +138,40 @@ class ProductDetailsVC: UIViewController {
     }
 
     @objc func addToBasketButtonPressed(_ sender: Any) {
-        let productRealm = BasketProductsRealm()
 
-        productRealm.productName = self.product?.productName ?? ""
-        productRealm.productInformation = self.product?.productInformation ?? ""
-        productRealm.productPrice = self.product?.productPrice ?? ""
-        productRealm.companyUrl = self.product?.companyUrl ?? ""
-        productRealm.productLikes = self.product?.productLikes ?? ""
-        productRealm.productDislikes = self.product?.productDislikes ?? ""
-        productRealm.productImageURL = self.product?.productImageURL ?? ""
+        if FirebaseAuth.Auth.auth().currentUser != nil {
+            let productRealm = BasketProductsRealm()
 
-        try? realm?.write {
-            realm?.add(productRealm)
+            productRealm.productName = self.product?.productName ?? ""
+            productRealm.productInformation = self.product?.productInformation ?? ""
+            productRealm.productPrice = self.product?.productPrice ?? ""
+            productRealm.companyUrl = self.product?.companyUrl ?? ""
+            productRealm.productLikes = self.product?.productLikes ?? ""
+            productRealm.productDislikes = self.product?.productDislikes ?? ""
+            productRealm.productImageURL = self.product?.productImageURL ?? ""
+
+            try? realm?.write {
+                realm?.add(productRealm)
+            }
+            self.showAlertProductAdded()
+        } else {
+            self.showAlertToCreateAccount()
         }
-        self.showAlert()
     }
 
     // Alert func when place added to basket
-    func showAlert() {
+    func showAlertProductAdded() {
         let alert = UIAlertController(title: "Product added to 🛒", message: nil, preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { action in
+            print("tapped Ok")
+        }))
+
+        present(alert, animated: true)
+    }
+
+    func showAlertToCreateAccount() {
+        let alert = UIAlertController(title: "😩 We are sorry, but you need to create an account to add this product to the basket", message: nil, preferredStyle: .alert)
 
         alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { action in
             print("tapped Ok")
