@@ -45,6 +45,14 @@ class MilksListViewController: UIViewController {
 
     @objc func logOutButtonTapped() {
         do {
+            // delete all products from basket if user log out
+            guard
+                let object = realm?.objects(BasketProductsRealm.self)
+            else { return }
+            try realm?.write {
+                realm?.delete(object)
+            }
+            // log out from FireBase
             try FirebaseAuth.Auth.auth().signOut()
             dismiss(animated: true, completion: nil)
         } catch {
@@ -56,7 +64,6 @@ class MilksListViewController: UIViewController {
         print("Basket tapped")
 
         let basketVC = UINavigationController(rootViewController: BasketVC())
-//        basketVC.modalPresentationStyle = .fullScreen
         basketVC.modalTransitionStyle = .coverVertical
         present(basketVC, animated: true)
     }

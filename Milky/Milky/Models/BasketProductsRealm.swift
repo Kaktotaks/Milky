@@ -18,4 +18,5 @@ class BasketProductsRealm: Object {
     @objc dynamic var productImageURL: String = ""
     @objc dynamic var companyUrl: String = ""
     @objc dynamic var productPrice: String = ""
+//    @objc dynamic var productID: Int = 0
 }
