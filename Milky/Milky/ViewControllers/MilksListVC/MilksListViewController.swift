@@ -10,9 +10,20 @@ import FirebaseAuth
 import UIKit
 import SnapKit
 import RealmSwift
+import CoreAudio
 
 class MilksListViewController: UIViewController {
     private var products: [Product] = []
+    private var filteredProducts = [Product]()
+    private let searchController = UISearchController(searchResultsController: nil)
+    private var searchBarIsEmpty: Bool {
+        guard let text = searchController.searchBar.text else { return false }
+        return text.isEmpty
+    }
+    private var isFiltering: Bool {
+        return searchController.isActive && !searchBarIsEmpty
+    }
+
     let realm = try? Realm()
 
     private let tableView: UITableView = {
@@ -37,6 +48,13 @@ class MilksListViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartImage, style: .plain, target: self, action: #selector(goToBasket))
 
         title = "Products"
+        
+        // Setup searchController
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
 
     override func viewDidLayoutSubviews() {super.viewDidLayoutSubviews()
@@ -72,13 +90,21 @@ class MilksListViewController: UIViewController {
 
 extension MilksListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if isFiltering {
+            return filteredProducts.count
+        }
         return Products.productsList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductCustomTableViewCell.identifier) as?
                  ProductCustomTableViewCell else { return UITableViewCell() }
-        cell.configure(with: Products.productsList[indexPath.row])
+
+        if isFiltering {
+            cell.configure(with: filteredProducts[indexPath.row])
+        } else {
+            cell.configure(with: Products.productsList[indexPath.row])
+        }
 
         return cell
     }
@@ -111,5 +137,19 @@ extension MilksListViewController: UITableViewDelegate {
             cell.layer.transform = CATransform3DIdentity
             cell.alpha = 1.0
         }
+    }
+}
+
+// Mark: searchController cinfig
+extension MilksListViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        filterContentForSearch(searchController.searchBar.text ?? "")
+    }
+    private func filterContentForSearch(_ searchText: String) {
+        filteredProducts = products.filter({ (product: Product) -> Bool in
+            return product.productName.lowercased().contains(searchText.lowercased())
+        })
+        
+        tableView.reloadData()
     }
 }
