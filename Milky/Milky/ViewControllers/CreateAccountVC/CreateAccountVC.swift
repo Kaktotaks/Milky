@@ -10,7 +10,6 @@ import FirebaseAuth
 
 class CreateAccountViewController: UIViewController {
     // MARK: - Variables
-
     private lazy var emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
     private lazy var passRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{6,}$"
 
@@ -70,8 +69,8 @@ class CreateAccountViewController: UIViewController {
         setupConstraintsForCreateAccountVC()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Go Back", style: .plain, target: self, action: #selector(goBackButtonTapped))
     }
-    // MARK: - Functions
 
+    // MARK: - Functions
     @objc private func goBackButtonTapped() {
         do {
             dismiss(animated: true, completion: nil)
@@ -100,15 +99,6 @@ class CreateAccountViewController: UIViewController {
                     preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default))
                 self.present(alert, animated: true, completion: nil)
-
-//                Auth.auth().signIn(withEmail: email, password: password)
-
-//                if FirebaseAuth.Auth.auth().currentUser != nil {
-//                    let milkListVC = UINavigationController(rootViewController: MilksListViewController())
-//                    milkListVC.modalPresentationStyle = .fullScreen
-//                    self.present(milkListVC, animated: false)
-//                }
-
             } else {
                 print(" ❗️Error in createUser: \(error?.localizedDescription ?? "")")
                 let alert = UIAlertController(
@@ -132,7 +122,7 @@ class CreateAccountViewController: UIViewController {
 
     func checkPasswordValidation(password: String) {
         guard password.count >= 6 else {
-          return  passwordField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 176/255, alpha: 50/255)
+            return  passwordField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 176/255, alpha: 50/255)
         }
 
         if password.matches(passRegex) {

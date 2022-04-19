@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E4205B5B280F28F500EDB184 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4205B5A280F28F500EDB184 /* DataManager.swift */; };
 		E4229E8A27464A5D003E93EA /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4229E8927464A5D003E93EA /* CreateAccountVC.swift */; };
 		E4229E8C27464B3B003E93EA /* CAVCConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4229E8B27464B3B003E93EA /* CAVCConstraints.swift */; };
 		E4229E8E27465B13003E93EA /* CreateAccountVCExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4229E8D27465B13003E93EA /* CreateAccountVCExtensions.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E4205B5A280F28F500EDB184 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		E4229E8927464A5D003E93EA /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
 		E4229E8B27464B3B003E93EA /* CAVCConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAVCConstraints.swift; sourceTree = "<group>"; };
 		E4229E8D27465B13003E93EA /* CreateAccountVCExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVCExtensions.swift; sourceTree = "<group>"; };
@@ -79,6 +81,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E4205B59280F28D800EDB184 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E4205B5A280F28F500EDB184 /* DataManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		E4229E862746444F003E93EA /* LoginVC */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +178,7 @@
 		E4C5AAA2273A7CC300086437 /* Milky */ = {
 			isa = PBXGroup;
 			children = (
+				E4205B59280F28D800EDB184 /* Managers */,
 				E4C5AAB7273A7CD400086437 /* ViewControllers */,
 				E4515E5F274B92FC0061296C /* CustomCells */,
 				E48E04CD273D73DD0087DDE5 /* Models */,
@@ -305,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E4C5AABC273A7E6300086437 /* LVCConstraints.swift in Sources */,
+				E4205B5B280F28F500EDB184 /* DataManager.swift in Sources */,
 				E4C5AAA8273A7CC300086437 /* LoginVC.swift in Sources */,
 				E4229E8A27464A5D003E93EA /* CreateAccountVC.swift in Sources */,
 				E48E04CF273D73F60087DDE5 /* Product.swift in Sources */,

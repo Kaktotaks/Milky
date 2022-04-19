@@ -6,13 +6,10 @@
 //
 
 import UIKit
-import RealmSwift
 import Firebase
 
 class BasketVC: UIViewController {
     var products: [BasketProductsRealm] = []
-
-    let realm = try? Realm()
 
      lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -21,7 +18,20 @@ class BasketVC: UIViewController {
         return tableView
     }()
 
-    override func viewDidLoad() { super.viewDidLoad()
+    lazy var clearButton: UIButton = {
+       let clearButton = UIButton()
+        let image = UIImage(named: "clear") as UIImage?
+        clearButton.setImage(image, for: .normal)
+        clearButton.addTarget(self, action: #selector(clearBasket), for: .touchUpInside)
+        clearButton.backgroundColor = .red
+        clearButton.layer.cornerRadius = 15
+       return clearButton
+   }()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        view.backgroundColor = .white
         setupConstraintsForBasketVC()
 
         tableView.delegate = self
@@ -45,13 +55,13 @@ class BasketVC: UIViewController {
     }
 
     private func getProducts() -> [BasketProductsRealm] {
+        DataManager.shared.retrieveAllDataForObject(remoteObjects: products)
+    }
 
-        var products = [BasketProductsRealm]()
-        guard let productsResults = realm?.objects(BasketProductsRealm.self) else { return [] }
-        for product in productsResults {
-            products.append(product)
+    @objc func clearBasket() {
+        DataManager.shared.realmTryDeleteAllObjects(products) {
+            self.dismiss(animated: true, completion: nil)
         }
-        return products
     }
 }
 

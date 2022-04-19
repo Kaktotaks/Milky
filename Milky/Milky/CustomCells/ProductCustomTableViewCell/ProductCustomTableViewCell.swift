@@ -12,7 +12,6 @@ import SDWebImage
 class ProductCustomTableViewCell: UITableViewCell {
     static let identifier = "ProductCustomTableViewCell"
     private var product: Product? = nil
-//    let realm = try? Realm()
 
     lazy var myBackgroundView: UIView = {
         let myBackgroundView = UIView()

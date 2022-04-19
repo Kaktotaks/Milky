@@ -9,7 +9,6 @@ import Foundation
 import FirebaseAuth
 import UIKit
 import SnapKit
-import RealmSwift
 import CoreAudio
 
 class MilksListViewController: UIViewController {
@@ -23,8 +22,6 @@ class MilksListViewController: UIViewController {
     private var isFiltering: Bool {
         return searchController.isActive && !searchBarIsEmpty
     }
-
-    let realm = try? Realm()
 
     private let tableView: UITableView = {
         let tableView = UITableView()
@@ -48,7 +45,7 @@ class MilksListViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: cartImage, style: .plain, target: self, action: #selector(goToBasket))
 
         title = "Products"
-        
+
         // Setup searchController
         searchController.searchResultsUpdater = self
         searchController.obscuresBackgroundDuringPresentation = false
@@ -62,19 +59,13 @@ class MilksListViewController: UIViewController {
     }
 
     @objc func logOutButtonTapped() {
-        do {
-            // delete all products from basket if user log out
-            guard
-                let object = realm?.objects(BasketProductsRealm.self)
-            else { return }
-            try realm?.write {
-                realm?.delete(object)
-            }
-            // log out from FireBase
+        DataManager.shared.deleteAllObjectsWhileLogout {
+            do {
             try FirebaseAuth.Auth.auth().signOut()
-            dismiss(animated: true, completion: nil)
-        } catch {
-            print("An error occurred")
+                self.dismiss(animated: true, completion: nil)
+            } catch {
+                print("An error occurred")
+            }
         }
     }
 
@@ -140,7 +131,7 @@ extension MilksListViewController: UITableViewDelegate {
     }
 }
 
-// Mark: searchController cinfig
+// MARK: searchController config
 extension MilksListViewController: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
         filterContentForSearch(searchController.searchBar.text ?? "")
@@ -149,7 +140,6 @@ extension MilksListViewController: UISearchResultsUpdating {
         filteredProducts = products.filter({ (product: Product) -> Bool in
             return product.productName.lowercased().contains(searchText.lowercased())
         })
-        
         tableView.reloadData()
     }
 }
