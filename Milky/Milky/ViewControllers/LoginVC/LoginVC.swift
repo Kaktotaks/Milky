@@ -23,6 +23,12 @@ class LoginViewController: UIViewController {
         return value
     }()
 
+    lazy var cowBell: UIImageView = {
+        let value: UIImageView = .init()
+        value.image = UIImage(named: "cow-bell")
+        return value
+    }()
+
     lazy var emailField: UITextField = {
         let value: UITextField = .init()
         value.placeholder = "Email Address"

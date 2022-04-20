@@ -13,9 +13,9 @@ class ProductCustomTableViewCell: UITableViewCell {
     static let identifier = "ProductCustomTableViewCell"
     private var product: Product? = nil
 
-    lazy var myBackgroundView: UIView = {
-        let myBackgroundView = UIView()
-        myBackgroundView.backgroundColor = UIColor(red: 173/255, green: 216/255, blue: 230/255, alpha: 0.30)
+    lazy var myBackgroundView: UIImageView = {
+        let myBackgroundView = UIImageView()
+        myBackgroundView.image = UIImage(named: "cloud")
         return myBackgroundView
     }()
 
@@ -68,7 +68,9 @@ class ProductCustomTableViewCell: UITableViewCell {
         return productPriceLabel
     }()
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) { super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+
         contentView.backgroundColor = .white
         contentView.addSubview(myBackgroundView)
         myBackgroundView.addSubview(addtoBasketButton)
@@ -83,7 +85,8 @@ class ProductCustomTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func layoutSubviews() { super.layoutSubviews()
+    override func layoutSubviews() {
+        super.layoutSubviews()
 
         addtoBasketButton.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(15)
@@ -98,9 +101,10 @@ class ProductCustomTableViewCell: UITableViewCell {
         }
 
         productImageView.snp.makeConstraints { make in
-            make.top.bottom.leading.equalTo(myBackgroundView).inset(10)
-            make.width.equalTo(120)
-            make.height.equalTo(myBackgroundView).inset(10)
+            make.bottom.equalTo(myBackgroundView).inset(20)
+            make.leading.equalTo(myBackgroundView).inset(40)
+            make.width.equalTo(80)
+            make.height.equalTo(myBackgroundView).inset(50)
         }
 
         myBackgroundView.snp.makeConstraints { make in
@@ -110,14 +114,14 @@ class ProductCustomTableViewCell: UITableViewCell {
 
         productInformationLabel.snp.makeConstraints { make in
             make.top.equalTo(productNameLabel).inset(30)
-            make.leading.equalTo(productImageView).inset(135)
+            make.leading.equalTo(productImageView).inset(100)
             make.trailing.equalTo(myBackgroundView).inset(10)
             make.bottom.equalTo(productPriceImage).inset(10)
         }
 
         productPriceImage.snp.makeConstraints { make in
             make.bottom.equalToSuperview().inset(20)
-            make.trailing.equalToSuperview().inset(10)
+            make.leading.equalToSuperview().inset(130)
             make.width.equalTo(50)
             make.height.equalTo(20)
         }

@@ -60,5 +60,12 @@ extension LoginViewController {
             make.top.equalTo(goToCreateNewAccountButton).inset(50)
             make.height.equalTo(40)
         }
+
+        view.addSubview(cowBell)
+        cowBell.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.width.height.equalTo(150)
+            make.topMargin.equalTo(enterAsGuestButton).inset(100)
+        }
     }
 }
