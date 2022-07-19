@@ -9,9 +9,14 @@ import UIKit
 import SnapKit
 import SDWebImage
 
+protocol CallForTapButtonDelegate {
+    func buttonAddToBasketTapped(tappedForItem item: Int)
+}
+
 class ProductCustomTableViewCell: UITableViewCell {
     static let identifier = "ProductCustomTableViewCell"
     private var product: Product? = nil
+    var delegate: CallForTapButtonDelegate?
 
     lazy var myBackgroundView: UIImageView = {
         let myBackgroundView = UIImageView()
@@ -24,9 +29,14 @@ class ProductCustomTableViewCell: UITableViewCell {
         let image = UIImage(named: "add-to-basket") as UIImage?
         addtoBasket.setImage(image, for: .normal)
         addtoBasket.backgroundColor = UIColor(red: 103/255, green: 157/255, blue: 70/255, alpha: 0.50)
+        addtoBasket.addTarget(self, action: #selector(addToBasket), for: .touchUpInside)
         addtoBasket.layer.cornerRadius = 15
         return addtoBasket
     }()
+
+    @objc func addToBasket(tappedForItem item: Int) {
+        self.delegate?.buttonAddToBasketTapped(tappedForItem: self.tag)
+     }
 
     lazy var productImageView: UIImageView = {
         let productImageView = UIImageView()

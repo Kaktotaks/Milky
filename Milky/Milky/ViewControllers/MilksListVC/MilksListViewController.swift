@@ -11,7 +11,12 @@ import UIKit
 import SnapKit
 import CoreAudio
 
-class MilksListViewController: UIViewController {
+class MilksListViewController: UIViewController, CallForTapButtonDelegate {
+    func buttonAddToBasketTapped(tappedForItem item: Int) {
+        let object = self.products[item]
+        print("Delegate is working ✌🏻, you just tapped on object number: \(object)")
+    }
+
     private var products: [Product] = []
     private var filteredProducts = [Product]()
     private let searchController = UISearchController(searchResultsController: nil)
@@ -93,10 +98,12 @@ extension MilksListViewController: UITableViewDataSource {
 
         if isFiltering {
             cell.configure(with: filteredProducts[indexPath.row])
+            cell.delegate = self
         } else {
             cell.configure(with: Products.productsList[indexPath.row])
+            cell.delegate = self
         }
-
+        cell.delegate = self
         return cell
     }
 
