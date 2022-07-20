@@ -10,8 +10,12 @@ import SDWebImage
 import SafariServices
 import Firebase
 
-class ProductDetailsVC: UIViewController {
+class ProductDetailsVC: BaseViewController {
     var product: Product? = nil
+
+    struct Colors {
+        static let lightBlue = UIColor(red: 173/255, green: 216/255, blue: 230/255, alpha: 0.30)
+    }
 
     lazy var cartImage = UIImage(named: "cart")
 
@@ -33,7 +37,7 @@ class ProductDetailsVC: UIViewController {
         let addtoBasket = UIButton()
         let image = UIImage(named: "add-to-basket") as UIImage?
         addtoBasket.setImage(image, for: .normal)
-        addtoBasket.backgroundColor = productInformationLabel.backgroundColor
+        addtoBasket.backgroundColor = Colors.lightBlue
         addtoBasket.addTarget(self, action: #selector(addToBasketButtonPressed), for: .touchUpInside)
         addtoBasket.layer.cornerRadius = 15
         return addtoBasket
@@ -57,12 +61,9 @@ class ProductDetailsVC: UIViewController {
     lazy var productInformationLabel: UILabel = {
         let productInformationLabel = UILabel()
         productInformationLabel.textColor = UIColor(red: 104/255, green: 70/255, blue: 47/255, alpha: 1)
-        productInformationLabel.font = .systemFont(ofSize: 17, weight: .regular)
+        productInformationLabel.font = .systemFont(ofSize: 17, weight: .medium)
         productInformationLabel.numberOfLines = 0
-        productInformationLabel.contentMode = .scaleAspectFill
-        productInformationLabel.backgroundColor = UIColor(red: 173/255, green: 216/255, blue: 230/255, alpha: 0.30)
-        productInformationLabel.layer.cornerRadius = 15
-        productInformationLabel.clipsToBounds = true
+        productInformationLabel.contentMode = .center
         return productInformationLabel
     }()
 
@@ -102,7 +103,7 @@ class ProductDetailsVC: UIViewController {
         let safariButton = UIButton()
         let image = UIImage(named: "safari") as UIImage?
         safariButton.setImage(image, for: .normal)
-        safariButton.backgroundColor = productInformationLabel.backgroundColor
+        safariButton.backgroundColor = Colors.lightBlue
         safariButton.layer.cornerRadius = 15
         safariButton.addTarget(self, action: #selector(safariButtonPressed), for: .touchUpInside)
         return safariButton
@@ -145,26 +146,6 @@ class ProductDetailsVC: UIViewController {
         } else {
             self.showAlertToCreateAccount()
         }
-    }
-
-    // Alert func when place added to basket
-    func showAlertProductAdded() {
-        let alert = UIAlertController(title: "Product added to 🛒", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { action in
-            print("tapped Ok")
-        }))
-
-        present(alert, animated: true)
-    }
-
-    func showAlertToCreateAccount() {
-        let alert = UIAlertController(title: "😩 We are sorry, but you need to create an account to add this product to the basket", message: nil, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: { action in
-            print("tapped Ok")
-        }))
-
-        present(alert, animated: true)
     }
 
     @objc func safariButtonPressed(sender: UIButton!) {

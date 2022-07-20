@@ -21,6 +21,7 @@ class ProductCustomTableViewCell: UITableViewCell {
     lazy var myBackgroundView: UIImageView = {
         let myBackgroundView = UIImageView()
         myBackgroundView.image = UIImage(named: "cloud")
+        myBackgroundView.isUserInteractionEnabled = true
         return myBackgroundView
     }()
 

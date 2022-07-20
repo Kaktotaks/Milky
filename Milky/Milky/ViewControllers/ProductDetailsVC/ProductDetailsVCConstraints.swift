@@ -25,9 +25,17 @@ extension ProductDetailsVC {
 
         myBackgroundView.addSubview(addtoBasketButton)
         addtoBasketButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
+            make.centerX.equalToSuperview().offset(-35)
             make.top.equalTo(productImageView).inset(250)
             make.width.height.equalTo(50)
+        }
+
+        myBackgroundView.addSubview(safariButton)
+        safariButton.snp.makeConstraints { make in
+            make.centerY.equalTo(addtoBasketButton)
+            make.centerX.equalTo(addtoBasketButton).offset(70)
+            make.width.equalTo(50)
+            make.height.equalTo(50)
         }
 
         myBackgroundView.addSubview(productPriceImage)
@@ -76,14 +84,6 @@ extension ProductDetailsVC {
         dislikesLabel.snp.makeConstraints { make in
             make.centerY.equalTo(dislikeButton)
             make.leading.equalTo(dislikeButton).inset(40)
-        }
-
-        myBackgroundView.addSubview(safariButton)
-        safariButton.snp.makeConstraints { make in
-            make.top.equalTo(productInformationLabel).inset(300)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(50)
-            make.height.equalTo(50)
         }
     }
 }

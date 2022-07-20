@@ -9,14 +9,8 @@ import Foundation
 import FirebaseAuth
 import UIKit
 import SnapKit
-import CoreAudio
 
-class MilksListViewController: UIViewController, CallForTapButtonDelegate {
-    func buttonAddToBasketTapped(tappedForItem item: Int) {
-        let object = self.products[item]
-        print("Delegate is working ✌🏻, you just tapped on object number: \(object)")
-    }
-
+class MilksListViewController: BaseViewController {
     private var products: [Product] = []
     private var filteredProducts = [Product]()
     private let searchController = UISearchController(searchResultsController: nil)
@@ -95,15 +89,15 @@ extension MilksListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ProductCustomTableViewCell.identifier) as?
                  ProductCustomTableViewCell else { return UITableViewCell() }
-
         if isFiltering {
             cell.configure(with: filteredProducts[indexPath.row])
-            cell.delegate = self
         } else {
             cell.configure(with: Products.productsList[indexPath.row])
-            cell.delegate = self
+
         }
+
         cell.delegate = self
+        cell.tag = indexPath.row
         return cell
     }
 
@@ -148,5 +142,20 @@ extension MilksListViewController: UISearchResultsUpdating {
             return product.productName.lowercased().contains(searchText.lowercased())
         })
         tableView.reloadData()
+    }
+}
+
+extension MilksListViewController: CallForTapButtonDelegate {
+    func buttonAddToBasketTapped(tappedForItem item: Int) {
+        print("Delegate is working ✌🏻")
+        let object = Products.productsList[item]
+
+        if FirebaseAuth.Auth.auth().currentUser != nil {
+            DataManager.shared.addRealmToBasket(object, completion: {
+                self.showAlertProductAdded()
+            })
+        } else {
+            self.showAlertToCreateAccount()
+        }
     }
 }
