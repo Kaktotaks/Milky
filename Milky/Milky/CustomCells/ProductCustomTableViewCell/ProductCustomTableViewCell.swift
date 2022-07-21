@@ -11,6 +11,7 @@ import SDWebImage
 
 protocol CallForTapButtonDelegate {
     func buttonAddToBasketTapped(tappedForItem item: Int)
+    func buttonGoToWebTapped(tappedForItem item: Int)
 }
 
 class ProductCustomTableViewCell: UITableViewCell {
@@ -29,7 +30,7 @@ class ProductCustomTableViewCell: UITableViewCell {
         let addtoBasket = UIButton()
         let image = UIImage(named: "add-to-basket") as UIImage?
         addtoBasket.setImage(image, for: .normal)
-        addtoBasket.backgroundColor = UIColor(red: 103/255, green: 157/255, blue: 70/255, alpha: 0.50)
+        addtoBasket.backgroundColor = ColorsManager.lightBlueColor
         addtoBasket.addTarget(self, action: #selector(addToBasket), for: .touchUpInside)
         addtoBasket.layer.cornerRadius = 15
         return addtoBasket
@@ -37,6 +38,20 @@ class ProductCustomTableViewCell: UITableViewCell {
 
     @objc func addToBasket(tappedForItem item: Int) {
         self.delegate?.buttonAddToBasketTapped(tappedForItem: self.tag)
+     }
+
+    lazy var goToWebButton: UIButton = {
+        let goToWebButton = UIButton()
+        let image = UIImage(named: "safari")
+        goToWebButton.setImage(image, for: .normal)
+        goToWebButton.backgroundColor = ColorsManager.lightBlueColor
+        goToWebButton.addTarget(self, action: #selector(goToWeb), for: .touchUpInside)
+        goToWebButton.layer.cornerRadius = 15
+        return goToWebButton
+    }()
+
+    @objc func goToWeb(tappedForItem item: Int) {
+        self.delegate?.buttonGoToWebTapped(tappedForItem: self.tag)
      }
 
     lazy var productImageView: UIImageView = {
@@ -85,6 +100,7 @@ class ProductCustomTableViewCell: UITableViewCell {
         contentView.backgroundColor = .white
         contentView.addSubview(myBackgroundView)
         myBackgroundView.addSubview(addtoBasketButton)
+        myBackgroundView.addSubview(goToWebButton)
         myBackgroundView.addSubview(productNameLabel)
         myBackgroundView.addSubview(productImageView)
         myBackgroundView.addSubview(productInformationLabel)
@@ -102,6 +118,13 @@ class ProductCustomTableViewCell: UITableViewCell {
         addtoBasketButton.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(15)
             make.trailing.equalToSuperview().inset(15)
+            make.width.height.equalTo(40)
+        }
+        
+        goToWebButton.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(15)
+            make.leading.equalToSuperview().inset(15)
+            make.width.height.equalTo(40)
         }
 
         productNameLabel.snp.makeConstraints { make in

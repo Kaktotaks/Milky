@@ -9,6 +9,10 @@ import Foundation
 import UIKit
 
 class BaseViewController: UIViewController {
+    override func viewDidLoad() {
+        super .viewDidLoad()
+    }
+
     // MARK: - Alerts ❗️
     func showAlertProductAdded() {
         let alert = UIAlertController(title: "Product added to 🛒", message: nil, preferredStyle: .alert)

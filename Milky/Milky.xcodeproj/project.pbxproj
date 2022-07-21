@@ -19,6 +19,7 @@
 		E4229E9C27465EA7003E93EA /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = E4229E9B27465EA7003E93EA /* FirebaseStorage */; };
 		E4298FCA273BDDF000EB0DAD /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E4298FC9273BDDF000EB0DAD /* GoogleService-Info.plist */; };
 		E456C6872888579A00ED6C68 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E456C6862888579A00ED6C68 /* BaseViewController.swift */; };
+		E456C68928895AE800ED6C68 /* ColorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E456C68828895AE800ED6C68 /* ColorsManager.swift */; };
 		E478906E27483DED00B5A72B /* ProductCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E478906D27483DED00B5A72B /* ProductCustomTableViewCell.swift */; };
 		E48E04CC273D184E0087DDE5 /* MilksListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48E04CB273D184E0087DDE5 /* MilksListViewController.swift */; };
 		E48E04CF273D73F60087DDE5 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48E04CE273D73F60087DDE5 /* Product.swift */; };
@@ -45,6 +46,7 @@
 		E4229E8D27465B13003E93EA /* CreateAccountVCExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVCExtensions.swift; sourceTree = "<group>"; };
 		E4298FC9273BDDF000EB0DAD /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E456C6862888579A00ED6C68 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		E456C68828895AE800ED6C68 /* ColorsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsManager.swift; sourceTree = "<group>"; };
 		E478906D27483DED00B5A72B /* ProductCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCustomTableViewCell.swift; sourceTree = "<group>"; };
 		E48E04CB273D184E0087DDE5 /* MilksListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MilksListViewController.swift; sourceTree = "<group>"; };
 		E48E04CE273D73F60087DDE5 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				E4205B5A280F28F500EDB184 /* DataManager.swift */,
+				E456C68828895AE800ED6C68 /* ColorsManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				E4B26FC6274FE5C000E67A8D /* BasketVCConstraints.swift in Sources */,
 				E4229E8C27464B3B003E93EA /* CAVCConstraints.swift in Sources */,
 				E48E04CC273D184E0087DDE5 /* MilksListViewController.swift in Sources */,
+				E456C68928895AE800ED6C68 /* ColorsManager.swift in Sources */,
 				E4B26FC4274E91D200E67A8D /* BasketVC.swift in Sources */,
 				E4C5AAA6273A7CC300086437 /* SceneDelegate.swift in Sources */,
 			);

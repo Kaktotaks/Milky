@@ -9,6 +9,7 @@ import Foundation
 import FirebaseAuth
 import UIKit
 import SnapKit
+import SafariServices
 
 class MilksListViewController: BaseViewController {
     private var products: [Product] = []
@@ -146,8 +147,20 @@ extension MilksListViewController: UISearchResultsUpdating {
 }
 
 extension MilksListViewController: CallForTapButtonDelegate {
-    func buttonAddToBasketTapped(tappedForItem item: Int) {
+    func buttonGoToWebTapped(tappedForItem item: Int) {
         print("Delegate is working ✌🏻")
+        let object = Products.productsList[item]
+
+        if let productsURL = URL(string: object.companyUrl) {
+                let config = SFSafariViewController.Configuration()
+                config.entersReaderIfAvailable = true
+
+                let web = SFSafariViewController(url: productsURL, configuration: config)
+                present(web, animated: true)
+        }
+    }
+
+    func buttonAddToBasketTapped(tappedForItem item: Int) {
         let object = Products.productsList[item]
 
         if FirebaseAuth.Auth.auth().currentUser != nil {

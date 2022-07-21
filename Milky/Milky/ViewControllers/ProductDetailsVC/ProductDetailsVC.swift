@@ -13,10 +13,6 @@ import Firebase
 class ProductDetailsVC: BaseViewController {
     var product: Product? = nil
 
-    struct Colors {
-        static let lightBlue = UIColor(red: 173/255, green: 216/255, blue: 230/255, alpha: 0.30)
-    }
-
     lazy var cartImage = UIImage(named: "cart")
 
     lazy var myBackgroundView: UIScrollView = {
@@ -37,7 +33,7 @@ class ProductDetailsVC: BaseViewController {
         let addtoBasket = UIButton()
         let image = UIImage(named: "add-to-basket") as UIImage?
         addtoBasket.setImage(image, for: .normal)
-        addtoBasket.backgroundColor = Colors.lightBlue
+        addtoBasket.backgroundColor = ColorsManager.lightBlueColor
         addtoBasket.addTarget(self, action: #selector(addToBasketButtonPressed), for: .touchUpInside)
         addtoBasket.layer.cornerRadius = 15
         return addtoBasket
@@ -53,14 +49,14 @@ class ProductDetailsVC: BaseViewController {
 
     lazy var productPriceLabel: UILabel = {
         let productPriceLabel = UILabel()
-        productPriceLabel.textColor = UIColor(red: 9/255, green: 120/255, blue: 40/255, alpha: 1)
+        productPriceLabel.textColor = ColorsManager.priceLabelColor
         productPriceLabel.font = .systemFont(ofSize: 17, weight: .heavy)
         return productPriceLabel
     }()
 
     lazy var productInformationLabel: UILabel = {
         let productInformationLabel = UILabel()
-        productInformationLabel.textColor = UIColor(red: 104/255, green: 70/255, blue: 47/255, alpha: 1)
+        productInformationLabel.textColor = ColorsManager.brownTextColor
         productInformationLabel.font = .systemFont(ofSize: 17, weight: .medium)
         productInformationLabel.numberOfLines = 0
         productInformationLabel.contentMode = .center
@@ -71,7 +67,7 @@ class ProductDetailsVC: BaseViewController {
         let likeButton = UIButton()
         let image = UIImage(named: "like") as UIImage?
         likeButton.setImage(image, for: .normal)
-        likeButton.backgroundColor = UIColor(red: 103/255, green: 157/255, blue: 70/255, alpha: 0.50)
+        likeButton.backgroundColor = ColorsManager.lightGreenColor
         likeButton.layer.cornerRadius = 15
         return likeButton
     }()
@@ -80,7 +76,7 @@ class ProductDetailsVC: BaseViewController {
         let dislikeButton = UIButton()
         let image = UIImage(named: "dislike") as UIImage?
         dislikeButton.setImage(image, for: .normal)
-        dislikeButton.backgroundColor = UIColor(red: 254/255, green: 54/255, blue: 100/255, alpha: 0.50)
+        dislikeButton.backgroundColor = ColorsManager.lightRedColor
         dislikeButton.layer.cornerRadius = 15
         return dislikeButton
     }()
@@ -103,7 +99,7 @@ class ProductDetailsVC: BaseViewController {
         let safariButton = UIButton()
         let image = UIImage(named: "safari") as UIImage?
         safariButton.setImage(image, for: .normal)
-        safariButton.backgroundColor = Colors.lightBlue
+        safariButton.backgroundColor = ColorsManager.lightBlueColor
         safariButton.layer.cornerRadius = 15
         safariButton.addTarget(self, action: #selector(safariButtonPressed), for: .touchUpInside)
         return safariButton
@@ -150,7 +146,7 @@ class ProductDetailsVC: BaseViewController {
 
     @objc func safariButtonPressed(sender: UIButton!) {
         if let productsURLString = self.product?.companyUrl {
-            if let productsURL = URL(string: productsURLString){
+            if let productsURL = URL(string: productsURLString) {
                 let config = SFSafariViewController.Configuration()
                 config.entersReaderIfAvailable = true
 
