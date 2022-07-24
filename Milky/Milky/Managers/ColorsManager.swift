@@ -13,5 +13,4 @@ struct ColorsManager {
     static let lightRedColor = UIColor(red: 254/255, green: 54/255, blue: 100/255, alpha: 0.50)
     static let brownTextColor = UIColor(red: 104/255, green: 70/255, blue: 47/255, alpha: 1)
     static let priceLabelColor = UIColor(red: 9/255, green: 120/255, blue: 40/255, alpha: 1)
-    
 }

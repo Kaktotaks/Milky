@@ -26,7 +26,7 @@ class ProductCustomTableViewCell: UITableViewCell {
         return myBackgroundView
     }()
 
-    lazy var addtoBasketButton: UIButton = {
+    private lazy var addtoBasketButton: UIButton = {
         let addtoBasket = UIButton()
         let image = UIImage(named: "add-to-basket") as UIImage?
         addtoBasket.setImage(image, for: .normal)
@@ -40,7 +40,7 @@ class ProductCustomTableViewCell: UITableViewCell {
         self.delegate?.buttonAddToBasketTapped(tappedForItem: self.tag)
      }
 
-    lazy var goToWebButton: UIButton = {
+    private lazy var goToWebButton: UIButton = {
         let goToWebButton = UIButton()
         let image = UIImage(named: "safari")
         goToWebButton.setImage(image, for: .normal)
@@ -54,7 +54,7 @@ class ProductCustomTableViewCell: UITableViewCell {
         self.delegate?.buttonGoToWebTapped(tappedForItem: self.tag)
      }
 
-    lazy var productImageView: UIImageView = {
+    private lazy var productImageView: UIImageView = {
         let productImageView = UIImageView()
         productImageView.contentMode = .scaleAspectFill
         productImageView.clipsToBounds = true
@@ -62,14 +62,14 @@ class ProductCustomTableViewCell: UITableViewCell {
         return productImageView
     }()
 
-    lazy var productNameLabel: UILabel = {
+    private lazy var productNameLabel: UILabel = {
         let productNameLabel = UILabel()
         productNameLabel.textColor = UIColor(red: 104/255, green: 70/255, blue: 47/255, alpha: 1)
         productNameLabel.font = .systemFont(ofSize: 20, weight: .bold)
         return productNameLabel
     }()
 
-    lazy var productInformationLabel: UILabel = {
+    private lazy var productInformationLabel: UILabel = {
         let productInformationLabel = UILabel()
         productInformationLabel.textColor = UIColor(red: 104/255, green: 70/255, blue: 47/255, alpha: 1)
         productInformationLabel.font = .systemFont(ofSize: 17, weight: .regular)
@@ -79,7 +79,7 @@ class ProductCustomTableViewCell: UITableViewCell {
     }()
 
 // MARK: Price
-    lazy var productPriceImage: UIImageView = {
+    private lazy var productPriceImage: UIImageView = {
         let productPriceImage = UIImageView()
         productPriceImage.image = UIImage(named: "productPrice")
         productPriceImage.contentMode = .scaleAspectFill
@@ -87,7 +87,7 @@ class ProductCustomTableViewCell: UITableViewCell {
         return productPriceImage
     }()
 
-    lazy var productPriceLabel: UILabel = {
+    private lazy var productPriceLabel: UILabel = {
         let productPriceLabel = UILabel()
         productPriceLabel.textColor = UIColor(red: 9/255, green: 120/255, blue: 40/255, alpha: 1)
         productPriceLabel.font = .systemFont(ofSize: 17, weight: .heavy)

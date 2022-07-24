@@ -46,7 +46,7 @@ class BasketVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if FirebaseAuth.Auth.auth().currentUser != nil {
+        if Firebase.Auth.auth().currentUser != nil {
             self.products = self.getProducts()
             self.tableView.reloadData()
         } else {
