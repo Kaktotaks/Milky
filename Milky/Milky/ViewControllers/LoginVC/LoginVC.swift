@@ -18,7 +18,7 @@ class LoginViewController: UIViewController {
         value.text = "Milky 🐮"
         value.textAlignment = .center
         value.font = UIFont.systemFont(ofSize: 50, weight: .black)
-        value.textColor = UIColor(red: 96/255, green: 148/255, blue: 176/255, alpha: 0.70)
+        value.textColor = ColorsManager.BlueColor
         value.numberOfLines = 0
         return value
     }()
@@ -33,7 +33,7 @@ class LoginViewController: UIViewController {
         let value: UITextField = .init()
         value.placeholder = "Email Address"
         value.font = UIFont.systemFont(ofSize: 20)
-        value.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 176/255, alpha: 50/255)
+        value.backgroundColor = ColorsManager.textFieldColor
         value.layer.cornerRadius = 10
         value.autocapitalizationType = .none
         value.leftViewMode = .always
@@ -55,7 +55,7 @@ class LoginViewController: UIViewController {
 
     lazy var loginButton: UIButton = {
         let value: UIButton = .init()
-        value.backgroundColor = UIColor(red: 73/255, green: 166/255, blue: 125/255, alpha: 1)
+        value.backgroundColor = ColorsManager.greenColor
         value.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         value.setTitleColor(.white, for: .normal)
         value.setTitle("Login", for: .normal)
@@ -65,7 +65,7 @@ class LoginViewController: UIViewController {
 
     lazy var goToCreateNewAccountButton: UIButton = {
         let value: UIButton = .init()
-        value.backgroundColor = UIColor(red: 215/255, green: 180/255, blue: 149/255, alpha: 1)
+        value.backgroundColor = ColorsManager.brownColor
         value.addTarget(self, action: #selector(goToCreateNewAccountButtonPressed), for: .touchUpInside)
         value.setTitleColor(.white, for: .normal)
         value.setTitle("Create new account", for: .normal)

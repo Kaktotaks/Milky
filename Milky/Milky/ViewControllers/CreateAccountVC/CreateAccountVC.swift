@@ -18,7 +18,7 @@ class CreateAccountViewController: UIViewController {
         value.text = "Milky 🐮"
         value.textAlignment = .center
         value.font = UIFont.systemFont(ofSize: 50, weight: .black)
-        value.textColor = UIColor(red: 96/255, green: 148/255, blue: 176/255, alpha: 0.70)
+        value.textColor = ColorsManager.BlueColor
         value.numberOfLines = 0
         return value
     }()
@@ -27,7 +27,7 @@ class CreateAccountViewController: UIViewController {
         let value: UITextField = .init()
         value.placeholder = "Enter your email address"
         value.font = UIFont.systemFont(ofSize: 20)
-        value.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 176/255, alpha: 50/255)
+        value.backgroundColor = ColorsManager.textFieldColor
         value.layer.cornerRadius = 10
         value.autocapitalizationType = .none
         value.leftViewMode = .always
@@ -49,7 +49,7 @@ class CreateAccountViewController: UIViewController {
 
     lazy var createAccountButton: UIButton = {
         let value: UIButton = .init()
-        value.backgroundColor = UIColor(red: 215/255, green: 180/255, blue: 149/255, alpha: 1)
+        value.backgroundColor = ColorsManager.brownColor
         value.addTarget(self, action: #selector(createAccountButtonPressed), for: .touchUpInside)
         value.setTitleColor(.white, for: .normal)
         value.setTitle("Create an account", for: .normal)
@@ -64,7 +64,6 @@ class CreateAccountViewController: UIViewController {
         emailField.delegate = self
         passwordField.delegate = self
 
-        view.backgroundColor = .white
         title = "Account creation 👀"
         setupConstraintsForCreateAccountVC()
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Go Back", style: .plain, target: self, action: #selector(goBackButtonTapped))
@@ -114,23 +113,23 @@ class CreateAccountViewController: UIViewController {
 
     func checkEmailValidation(email: String) {
         if email.matches(emailRegex) {
-            emailField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 1/255, alpha: 50/255)
+            emailField.backgroundColor = ColorsManager.greenTextFieldColor
         } else if emailField.text == "" {
-            emailField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 176/255, alpha: 50/255)
+            emailField.backgroundColor = ColorsManager.textFieldColor
         }
     }
 
     func checkPasswordValidation(password: String) {
         guard password.count >= 6 else {
-            return  passwordField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 176/255, alpha: 50/255)
+            return  passwordField.backgroundColor = ColorsManager.textFieldColor
         }
 
         if password.matches(passRegex) {
-            passwordField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 1/255, alpha: 50/255)
+            passwordField.backgroundColor = ColorsManager.greenTextFieldColor
         } else if passwordField.text == "" {
-            passwordField.backgroundColor = UIColor(red: 96/255, green: 148/255, blue: 176/255, alpha: 50/255)
+            passwordField.backgroundColor = ColorsManager.textFieldColor
         } else {
-            passwordField.backgroundColor = .red
+            passwordField.backgroundColor = ColorsManager.redTextFieldColor
         }
     }
 }

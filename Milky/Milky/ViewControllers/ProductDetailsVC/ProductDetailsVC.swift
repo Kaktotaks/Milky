@@ -17,7 +17,6 @@ class ProductDetailsVC: BaseViewController {
 
     lazy var myBackgroundView: UIScrollView = {
         let myBackgroundView = UIScrollView()
-        myBackgroundView.backgroundColor = .white
         return myBackgroundView
     }()
 

@@ -11,8 +11,6 @@ import UIKit
 
 extension LoginViewController {
     func setupConstraintsForLoginView() {
-    view.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-
         view.addSubview(milkyLabel)
         milkyLabel.snp.makeConstraints { make in
         make.leading.trailing.equalToSuperview().inset(30)

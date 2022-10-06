@@ -37,7 +37,6 @@ class MilksListViewController: BaseViewController {
 
         self.tableView.register(ProductCustomTableViewCell.self, forCellReuseIdentifier: ProductCustomTableViewCell.identifier)
         view.addSubview(tableView)
-        tableView.backgroundColor = .white
         tableView.delegate = self
         tableView.dataSource = self
 

@@ -13,7 +13,6 @@ class BasketVC: UIViewController {
 
      lazy var tableView: UITableView = {
         let tableView = UITableView()
-        tableView.backgroundColor = .white
         tableView.separatorStyle = .none
         return tableView
     }()
@@ -31,7 +30,7 @@ class BasketVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        view.backgroundColor = ColorsManager.basketBackgroundColor
         setupConstraintsForBasketVC()
 
         tableView.delegate = self

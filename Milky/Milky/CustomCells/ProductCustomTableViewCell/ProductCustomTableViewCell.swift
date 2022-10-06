@@ -64,14 +64,14 @@ class ProductCustomTableViewCell: UITableViewCell {
 
     private lazy var productNameLabel: UILabel = {
         let productNameLabel = UILabel()
-        productNameLabel.textColor = UIColor(red: 104/255, green: 70/255, blue: 47/255, alpha: 1)
+        productNameLabel.textColor = ColorsManager.brownTextColor
         productNameLabel.font = .systemFont(ofSize: 20, weight: .bold)
         return productNameLabel
     }()
 
     private lazy var productInformationLabel: UILabel = {
         let productInformationLabel = UILabel()
-        productInformationLabel.textColor = UIColor(red: 104/255, green: 70/255, blue: 47/255, alpha: 1)
+        productInformationLabel.textColor = ColorsManager.brownTextColor
         productInformationLabel.font = .systemFont(ofSize: 17, weight: .regular)
         productInformationLabel.numberOfLines = 5
         productInformationLabel.contentMode = .bottomLeft
@@ -89,7 +89,7 @@ class ProductCustomTableViewCell: UITableViewCell {
 
     private lazy var productPriceLabel: UILabel = {
         let productPriceLabel = UILabel()
-        productPriceLabel.textColor = UIColor(red: 9/255, green: 120/255, blue: 40/255, alpha: 1)
+        productPriceLabel.textColor = ColorsManager.greenColor
         productPriceLabel.font = .systemFont(ofSize: 17, weight: .heavy)
         return productPriceLabel
     }()
@@ -97,7 +97,6 @@ class ProductCustomTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        contentView.backgroundColor = .white
         contentView.addSubview(myBackgroundView)
         myBackgroundView.addSubview(addtoBasketButton)
         myBackgroundView.addSubview(goToWebButton)
@@ -120,7 +119,7 @@ class ProductCustomTableViewCell: UITableViewCell {
             make.trailing.equalToSuperview().inset(15)
             make.width.height.equalTo(40)
         }
-        
+
         goToWebButton.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(15)
             make.leading.equalToSuperview().inset(15)
